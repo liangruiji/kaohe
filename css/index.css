@@ -1,0 +1,207 @@
+/* header */
+.header {
+    height: 438px;
+    margin-top: 20px;
+
+}
+.header_item {
+    width: 560px;
+    height: 100%;
+    /* background-color: purple; */
+}
+.item_1 {
+    padding: 50px 0;
+}
+.item_1 h3 {
+    font-size: 22px;
+    
+}
+.item_1 h5 {
+    font-size: 12px;
+}
+.item_2 {
+    position: relative;
+    background-color: #ffffff;
+}
+.item_2 .lunbo {
+    position: relative;
+    margin: 0 10.5px;
+    overflow: hidden;
+}
+.item_2 ul {
+    position: relative;
+    height: 288px;
+    width: 600%;
+}
+
+.item_2 ul li{
+    float: left;
+    padding: 10px 0;
+    height: 268px;
+    
+    
+}
+.item_2 i {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    margin-top: -18px;
+    display: block;
+    width: 24px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    font-family: 'icomoon';
+    color: #ffffff;
+    background-color: rgba(0,0,0,.2);
+    cursor: pointer;
+    
+}
+.icon1 {
+    left: 15px;
+}
+.icon2 {
+    right: 15px;
+}
+.square {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -40px;
+    z-index: 100;
+    /* background-color: pink; */
+    
+}
+.square li {
+    /* position: relative;
+    bottom: 0; */
+    display: inline-block;
+    width: 8px;
+    height: 9px;
+    margin-right: 10px;
+    background-color: rgba(255,255,255,.4);
+    cursor: pointer;
+}
+.square .current {
+    height: 12px;
+    background-color: #fff;
+}
+.tab_list {
+    height: 151px;
+
+}
+.tab_list ul{
+    position: relative;
+    margin-top: 73px;
+    float: right;
+    height: 23px;
+    
+}
+.tab_list li:nth-child(-n+5) {
+    position: relative;
+    float: left;
+    /* margin-left: 20px; */
+    line-height: 23px;
+    /* border-bottom: 2px solid #cccfd0; */
+
+}
+/* 滑块 */
+.tab_list .slider {
+    position: absolute;
+    bottom: -2px;
+    left: 20px;
+    height: 2px;
+    background-color: #cccfd0;
+}
+
+.tab_list a {
+    margin-left: 20px;
+    font-size: 9px;
+    font-weight: 800;
+    color: #000;
+}
+
+.tab_con {
+    height: 288px;
+    /* padding: 40px 50px 31px; */
+    background-color: #ffffff;
+}
+.tab_con-top {
+    height: 69px;
+    padding: 40px 50px 0;
+    /* background-color: pink; */
+    border-bottom: 1px solid #efeff0;
+}
+.tab_con-top h3 {
+    font-size: 13px;
+    color: #000;
+    float: left;
+}
+.tab_con-top .btn {
+    width: 91px;
+    height: 36px;
+    float: right;
+    font-size: 9px;
+    color: #7b7e80;
+    line-height: 36px;
+    text-align: center;
+    background-color: #fff;
+    border: 2px solid #e9e9ea;
+    border-radius: 5px;
+}
+.tab_con-button {
+    overflow: hidden;
+    padding: 3px 50px 0;
+}
+.message {
+    height: 174px;
+    font-size: 10px;
+    /* background-color: pink; */
+}
+.message dt {
+    font-weight: 600;
+}
+.message dt ,.message dd{
+    height: 50px;
+    line-height: 50px;
+    /* text-align: center; */
+}
+.message.mgl {
+    margin-left: 70px;
+}
+.message .btn {
+    width: 65px;
+    height: 30px;
+    background-color: #5dd054;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+/* header end*/
+
+/* line */
+.line {
+    
+    height: 349px;
+    margin-top: 19px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+/* line end*/
+
+/* 圆饼、圆柱图 */
+.chart {
+    overflow: hidden;
+    margin-bottom: 52px;
+}
+.pie,
+.bar {
+    float: left;
+    width: 560px;
+    height: 377px;
+    background-color: #fff;
+}
+.pie {
+    margin-right: 20px;
+}
+/* 圆饼、圆柱图 end*/
