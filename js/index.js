@@ -16,6 +16,7 @@ function lunbo(params) {
     // console.log(ul.children.length);
     console.log(ul.children[0].offsetWidth);
     var w = ul.children[0].offsetWidth;
+    
 
 
     // 遍历ul，动态建立方形索引，添加属性index，添加方形索引的点击事件
