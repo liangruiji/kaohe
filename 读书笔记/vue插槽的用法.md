@@ -71,7 +71,7 @@ vue中关于插槽的文档说明很短，语言又写的很凝练，再加上�
 
 最终的渲染结果如图所示：
 
-![img](https://user-gold-cdn.xitu.io/2018/1/25/1612dc51f5f9f1c4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![img](./img/1.png)
 
 
 
@@ -140,7 +140,7 @@ vue中关于插槽的文档说明很短，语言又写的很凝练，再加上�
 
 显示结果如图：
 
-![img](https://user-gold-cdn.xitu.io/2018/1/25/1612dc51f60baa0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![img](./img/2.png)
 
 
 
@@ -258,7 +258,7 @@ vue中关于插槽的文档说明很短，语言又写的很凝练，再加上�
 
 
 
-![img](https://user-gold-cdn.xitu.io/2018/1/25/1612dc51f6344ace?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![img](./img/3.png)
 
 
 

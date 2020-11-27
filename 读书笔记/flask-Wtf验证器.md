@@ -1,3 +1,5 @@
+作用：后端验证表单是否符合自己规定的规则
+
 定义表单类
 
 ```python
@@ -23,9 +25,12 @@ class AddTodo(FlaskForm):
 from flask import Blueprint, request
 @api.route('/',methods=['POST'])
 def api_add():
+  	# 实例化表单类
     form=AddTodo()
+    # 验证成功
     if form.validate_on_submit():
     	...验证成功
+    # 验证失败
     else:
     	...验证失败
       5fbd1a661e17354485823e48
