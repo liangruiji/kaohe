@@ -62,27 +62,33 @@
 
 2. children 获取所有的子元素节点 也是我们实际开发常用的
 
-3. nodeType   节点类型
+3. ```js
+   firstElementChild
+   lastElementChild
+   parentElement
+   ```
 
-4. nodeValue  节点值
+4. nodeType   节点类型
 
-5. firstChild   第一个孩子节点
+5. nodeValue  节点值
 
-6. lastChild   最后一孩子节点
+6. firstChild   第一个孩子节点
 
-7. nodeName 返回值是大写
+7. lastChild   最后一孩子节点
 
-8. parentNode   父节点
+8. nodeName 返回值是大写
 
-9. nextSibling   下一个节点
+9. parentNode   父节点
 
-10. previousSibling 上一个节点
+10. nextSibling   下一个节点
 
-11. nextElementSibling 下一个元素节点
+11. previousSibling 上一个节点
 
-12. previousElementSibling 上一个元素节点
+12. nextElementSibling 下一个元素节点
 
-13. ##### 获得下一个元素节点
+13. previousElementSibling 上一个元素节点
+
+14. ##### 获得下一个元素节点
 
 ```
 // 获得下一个元素节点

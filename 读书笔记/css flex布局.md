@@ -12,12 +12,14 @@
 
 ### 父项常见属性
 
-+ flex-direction：设置主轴的方向
-+ justify-content：设置主轴上的子元素排列方式
-+ flex-wrap：设置子元素是否换行  
-+ align-content：设置侧轴上的子元素的排列方式（多行）
-+ align-items：设置侧轴上的子元素排列方式（单行）
-+ flex-flow：复合属性，相当于同时设置了 flex-direction 和 flex-wrap
+* display：flex|
+
++ flex-direction：row|row-reverse|column|column-reverse设置主轴的方向
++ justify-content：flex-start|flex-end|center|space-between|space-around|space-evenly设置主轴上的子元素排列方式
++ flex-wrap：nowrap|wrap|wrap-reverse设置子元素是否换行  
++ align-content：flex-start|flex-end|center|space-between|space-around|space-evenly设置侧轴上的子元素的排列方式（多行）
++ align-items：stretch|flex-start|flex-end|center|baseline设置侧轴上的子元素排列方式（单行）
++ flex-flow：row nowrap 复合属性，相当于同时设置了 flex-direction 和 flex-wrap
 
 ### flex布局子项常见属性
 

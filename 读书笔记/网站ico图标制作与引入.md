@@ -126,10 +126,19 @@ http://www.iconfont.cn/
      font-weight: normal;
      font-style: normal;
    }
+   //阿里字体库
+@font-face {
+     font-family: 'iconfont';
+  src: url('../fonts/iconfont.eot');
+     src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/iconfont.woff') format('woff'),
+       url('../fonts/iconfont.ttf') format('truetype'),
+       url('../fonts/iconfont.svg#iconfont') format('svg');
+   }
    ```
-
+   
    ##### 4. 给盒子使用字体
-
+   
    ```css
    span {
    		font-family: "icomoon";

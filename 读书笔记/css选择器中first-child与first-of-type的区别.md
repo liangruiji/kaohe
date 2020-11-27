@@ -80,7 +80,7 @@ margin-top 和 margin-left 会影响自身向指定方向偏移
 
 margin-right 和 margin-bottom 会影响相邻元素向指定方向偏移
 
-通过 margin 偏移后，原先空出来的位置也会由后面元素填不上。
+通过 margin 偏移后，原先空出来的位置也会由后面元素填上。
 
 当然，块级元素和行内元素在表现上稍有不同。
 

@@ -97,7 +97,7 @@ function lunbo(params) {
         }
     })
     
-    //设置自动轮播，添加右按钮事件的定时器
+    设置自动轮播，添加右按钮事件的定时器
     var timer = setInterval(function () {
         //手动调用点击事件
         rightBtn.click();
