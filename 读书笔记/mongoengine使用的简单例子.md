@@ -32,12 +32,16 @@ def api_add():
     result =newtodo.save()
     # 获得todo文档的集合
 		todolist = Todo.objects.all()
-    # 遍历文档的集合，每个文档调用在文档对象中的方法to_json()，转为json，并保存在列表a中
+    # 将MongoDB返回对象转换为字典的两种方式
+    # 方式1：遍历文档的集合，每个文档调用在文档对象中的方法to_json()，转为json，并保存在列表a中
     a = []
     for i in range(len(todolist)):
         b = todolist[i].to_json()
         a.append(b)
-   	# 路由响应返回a到前端
+   	
+    #方式2：调用.to_mongo()将对象转换为SON实例。一旦你有了它，你可以调用它的.to_dict()方法将其转换为字典。
+    todolist = [i.to_mongo().to_dict() for i in todolist]
+    # 路由响应返回a到前端
     return a
   # 修改
    id = todoform['id']

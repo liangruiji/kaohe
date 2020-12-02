@@ -11,7 +11,7 @@ from wtforms import (StringField, SubmitField, BooleanField, PasswordField)
 from wtforms.validators import (DataRequired, Length, EqualTo, InputRequired)
 # 4.定义表单类继承FlaskForm
 class AddTodo(FlaskForm):
-    cont = StringField(validators=[DataRequired()])
+    cont = StringField(validators=[DataRequired(message='这里错了')])
     status= StringField(validators=[DataRequired()])
     group = StringField(validators=[DataRequired()])
     id = StringField(validators=[DataRequired(),Regexp(r'[0-9a-f]{24}')])#正则验证

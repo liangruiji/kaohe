@@ -8,11 +8,12 @@
 #### 仓库store结构
 
 ~~~js
+// 0.导入
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+// 1. 声明使用vuex
 Vue.use(Vuex)
-
+// 2. 初始 state 对象
 const store = new Vuex.Store({
   state: {//state属性保存着我们的状态,组件通过计算属性return this.$store.state.count获得后，在组件中使用
 		count:1，
@@ -60,7 +61,9 @@ const store = new Vuex.Store({
 
 ~~~
 
-1.mutations里的函数，函数的第一个参数都是仓库的state对象，状态对象，第二个可选参数是vue实例通过方法触发mutations里的函数时，传的额外参数，第二个参数用于接收额外参数。
+1.mutations里的函数，函数的第一个参数都是仓库的state对象（状态对象），第二个可选参数是vue实例通过`this.$store.commit('mutations里的函数名，！向mutations里的函数传的额外参数')` 方法方法触发mutations里的函数时，传的额外参数，用于接收额外参数。
+
+2.通过 `store.state` 来获取状态对象，以及通过 `store.commit` 方法触发状态变更，通过提交 mutation 的方式，而非直接改变 `store.state.count`
 
 #### 组件获得在仓库的state属性保存的状态的方法
 
@@ -119,11 +122,13 @@ new Vue({
 
 有时候需要获取多个状态，但是使用计算属性会调用多次，显得麻烦，这里借助mapState方法来获取state。 使用mapState需要引入该方法
 
-mapState()可以传对象参数，也可以传字符串数组参数，返回一个对象。
+#### 用法
 
-传对象是原本计算属性的对象，但里面定义的方法第一个参数默认为this.$store.state
+mapState()可以传对象参数，也可以传字符串数组参数，**返回一个对象**。
 
-传字符串数组，表示计算属性名与仓库里状态属性名相同
+1.**传对象**是原本计算属性的对象，但里面定义的方法第一个参数默认为this.$store.state
+
+2.**传字符串数组**，表示计算属性名与仓库里状态属性名相同
 
 ```js
 // 1.引入方法

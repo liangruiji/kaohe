@@ -62,3 +62,32 @@ Branch 'develop' set up to track remote branch 'develop' from 'origin' by rebasi
  /web/www/vue_lrj   develop 
 ~~~
 
+梁锐基 11-30 上午 11:45
+ 焕哥，git push 出现这个error: failed to push some refs to 'git:vue-tpl-cli3'错误是什么意思。
+
+ 幸焕光 11-30 上午 11:46
+ 你的分支名是什么？
+
+ 梁锐基 11-30 上午 11:47
+ vue_lrj
+
+ 幸焕光 11-30 上午 11:49
+ 改下分支名
+
+ 幸焕光 11-30 上午 11:49
+ git branch -m vue_lrj dev_vue_lrj
+
+ 幸焕光 11-30 上午 11:50
+ 因为服务器上的钩子不允许非dev_xxx开头的分支名push上来
+
+ 梁锐基 11-30 上午 11:51
+ 但好像我之前都push过的，也没问题
+
+ 幸焕光 11-30 上午 11:53
+ 不允许的
+
+ 梁锐基 11-30 上午 11:54
+ 你刚才说的分支名是指本地分支名吗
+
+ 幸焕光 11-30 上午 11:55
+ 是的

@@ -133,9 +133,11 @@ Vue.components("custom",{
 
 ~~~
 
+### 使用组件的两种方式
 
+##### 1.直接在使用组件名
 
-##### :is 属性可以用来指定要展示的组件名称
+##### 2.使用component标签和它的 :is 属性可以用来指定要展示的组件名称
 
 ~~~	html
 // components是一个占位符， :is 属性可以用来指定要展示的组件名称
@@ -317,7 +319,7 @@ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用�
 
 
 
-## Vue中提供的标签（内置组件）
+## Vue中提供的标签（五个内置组件）
 
 Vue中提供了一些固定的标签来方便我们在开发过程中使用，并且在开发过程中，我们很有可能因为要使用某些第三方库而不得已要操作DOM元素，因此如何获取并操作DOM元素的使用呢。
 
@@ -836,9 +838,11 @@ new app({
 
 #### 事件修饰符
 
+Vue.js 为 `v-on` 提供了**事件修饰符**
+
 ```js
 .stop - 调用 event.stopPropagation()。 // 阻止冒泡
-.prevent - 调用 event.preventDefault()。// 组织默认事件
+.prevent - 调用 event.preventDefault()。// 阻止默认事件
 
 //capture添加事件侦听器时使用事件捕获模式 //事件触发顺序从外往里
 .capture - 添加事件侦听器时使用 capture 模式。 
@@ -859,7 +863,7 @@ new app({
 复制代码
 ```
 
-#### 按键修饰符
+#### 按键事件keyup修饰符
 
 - 自定义全局按键修饰符
 
@@ -872,6 +876,14 @@ Vue.config.keycodes.F2 = 113
 ```
 
 - Vue官方提供的按键修饰符
+
+  格式：
+
+  ~~~js
+  v-on:keyup.按键名   或者   @keyup.按键名
+  ~~~
+
+  常用的按键名
 
 ```js
 // 为了在必要的情况下支持旧浏览器，Vue 提供了绝大多数常用的按键码的别名：
@@ -887,7 +899,9 @@ Vue.config.keycodes.F2 = 113
 .对应键盘码 // 使用键盘码是要注意如果不是以上对应的键盘修饰符，需要创建按键修饰符
 使用方式:
 <p @keyup.enter="add"></p> // @click.按键修饰符
+
 <p @keyup.13="add"></p> // @click.对应键盘码
+//按键码查询地址： https://www.bejson.com/othertools/keycodes/ 
 复制代码
 ```
 

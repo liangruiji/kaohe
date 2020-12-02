@@ -28,3 +28,7 @@ https://www.zmrenwu.com/courses/vue2x-todo-tutorial/materials/44/
 
 https://blog.csdn.net/yycdaizi/article/details/102620785
 
+12数据库返回的对象转为字典
+
+13.scope.row在el-dialog中失效，怎么做
+
