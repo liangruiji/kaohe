@@ -38,6 +38,8 @@ def api_add():
     for i in range(len(todolist)):
         b = todolist[i].to_json()
         a.append(b)
+        
+    todolist = [i.to_json() for i in todolist]
    	
     #方式2：调用.to_mongo()将对象转换为SON实例。一旦你有了它，你可以调用它的.to_dict()方法将其转换为字典。
     todolist = [i.to_mongo().to_dict() for i in todolist]

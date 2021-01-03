@@ -8,13 +8,15 @@
 
 你可以创建一个拥有通用配置的axios实例
 
-#### axios.creat([config])
+#### axios.creat([config]) ，参数为配置对象
 
 我们应该会遇到这样一个问题，就是使用多个axios，需要配置 url,header,type 等等，那么我们多给请求就会面临写多个配置，看下面我们是怎么来解决他。
 
-//1创建一个新的axios
+### 作用：减少配置多个相同的配置
 
+### 使用方法
 
+#### 1创建一个新的axios
 
 ```csharp
 var instance = axios.create({
@@ -24,9 +26,11 @@ var instance = axios.create({
 });
 ```
 
-//2使用instance发请求 一共有两种方式
+#### 2使用instance发请求 一共有两种方式
 
+1.传对象配置
 
+2.使用get或post方法
 
 ```csharp
 //方式一 

@@ -24,7 +24,7 @@ const store = new Vuex.Store({
     }
   },
    actions: {
-    ddaddtodo (context) {//Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 context.commit 提交一个 mutation
+    ddaddtodo (context,！接收组件额外提交的参数) {//Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 context.commit 提交一个 mutation
       context.commit('addtodo')
     }
   }
@@ -47,6 +47,12 @@ const store = new Vuex.Store({
 ~~~
 
 ​	2.在组件通过computed计算属性使用 **mapState( )** 辅助函数，在组件中使用
+
+参数的两种形式：
+
+1.可传传对象参数
+
+2.传字符串数组参数   条件：计算属性名与state对象里的属性一致时才能传入字符串数组
 
 ~~~js
 	import { mapState } from 'vuex'
@@ -81,6 +87,21 @@ const store = new Vuex.Store({
 3.Mutation属性是一个 **保存一些 修改state属性里的状态的方法** 的对象 ，方法第一个参数是 state属性 
 
 作用：改变state中的状态， 组件通过提交 `this.$store.commit('mutations中的方法名')`触发mutation中的方法来更改 state中的状态，  唯一方法
+
+~~~js
+ mutations: {//保存一些 修改state属性里的状态的方法,组件通过提交 mutation来触发这里的方法来改变state中的状态
+    addtodo(state,！接收组件额外提交的参数) {
+      // 变更状态
+      state.todos.push({id:3,done:true})
+    }
+  },
+~~~
+
+#### 注意：
+
+**1.3.Mutation 函数第一个参数是与 store 实例的 state 对象，因此你可以通过state.属性名来访问并改变状态属性**
+
+**2.3.Mutation 函数第二个参数是 接收组件额外提交的参数，为可选参数**
 
 使用方法：
 
@@ -120,6 +141,19 @@ const store = new Vuex.Store({
 
 4.Action属性是一个 **保存一些 提交mutation的方法** 的对象
 
+~~~js
+actions: {
+    ddaddtodo (context,！接收组件额外提交的参数) {//Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 context.commit 提交一个 mutation
+      context.commit('addtodo')
+    }
+~~~
+
+#### 注意：
+
+**1.Action 函数第一个参数是与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 context.commit 提交一个 mutation**
+
+**2.Action 函数第二个参数是 接收组件额外提交的参数，为可选参数**
+
 使用方法
 
 ​	1.在组件中使用 `this.$store.dispatch('action中的方法名')` 触发 action中的方法
@@ -145,3 +179,5 @@ store.dispatch({
   amount: 10
 })
 ```
+
+5.模块

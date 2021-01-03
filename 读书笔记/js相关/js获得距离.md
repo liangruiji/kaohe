@@ -59,3 +59,37 @@ y：和pageY一样，用于兼容IE8及以前浏览器
 
 event.clientX：相对浏览器左上角的水平坐标
 event.clientY：相对浏览器左上角的垂直坐标
+
+
+
+##### js设置滚动条的位置
+
+如设置滚动条到网页顶部:
+
+```
+document.documentElement.scrollTop = 0;
+```
+
+浏览器窗口的滚动条的位置
+
+```
+window.pageYOffset
+```
+
+##### 浏览器窗口的滚动条的位置
+
+监听浏览器窗口的滚动条的位置，在vue中放在created中执行。
+
+```
+window.onscroll = function() {
+  console.log(window.pageYOffset)
+}
+```
+
+基于vue写实时聊天室，让滚动条始终处于最底部的方法
+
+```
+this.$nextTick(()=>{
+   this.$refs.ulTxtBox.scrollTop = this.$refs.ulTxtBox.scrollHeight
+})
+```

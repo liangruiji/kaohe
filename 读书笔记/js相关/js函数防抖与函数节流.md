@@ -1,3 +1,7 @@
+实例解析防抖动（Debouncing）和节流阀（Throttling）
+
+https://jinlong.github.io/2016/04/24/Debouncing-and-Throttling-Explained-Through-Examples/
+
 # [JavaScript：函数防抖与函数节流](https://segmentfault.com/a/1190000018266110)
 
 [javascript](https://segmentfault.com/t/javascript)

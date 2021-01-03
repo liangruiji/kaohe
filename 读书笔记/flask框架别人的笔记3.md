@@ -110,8 +110,8 @@ from flask import Blueprint
 app_home = Blueprint('app_home', __name__)
 
 
-# 2.注册蓝图路由
-@app_home.route('/home')
+# 2.注册蓝图路由，可以设置HTTP方法
+@app_home.route('/home',！methods=['GET'])
 def home():
     return 'home page'
 
@@ -128,8 +128,8 @@ from home import app_home
 app = Flask(__name__)
 
 
-# 4.注册蓝图
-app.register_blueprint(app_home)
+# 4.注册蓝图,可以url_prefix设置路由地址前缀
+app.register_blueprint(app_home,url_prefix='/user')
 
 
 @app.route('/')

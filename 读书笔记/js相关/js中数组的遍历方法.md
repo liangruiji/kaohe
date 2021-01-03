@@ -18,6 +18,8 @@ foreach有三个参数：arr.foreach(（数组元素，索引值（可选），�
 
 （3）for in可以遍历数组和对象；for of只能遍历数组。
 
+（4）for in 可以用
+
 **4.some和every**
 
 两者都是对数组中的每一项运行给定函数。some：如果该函数对任一项返回true，则返回true； every:如果该函数对每一项返回true,则返回true。

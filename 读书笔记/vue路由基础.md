@@ -1,6 +1,14 @@
+#### 路由作用：
+
+监听地址栏的改变，在路由出口中渲染不同的组件
+
+#### 概念
+
+1.路由导航（根据不同地址在路由出口渲染不同组件）
+
+2.路由出口（组件渲染的位置）
 
 
-路由作用：监听地址栏的改变，根据改变渲染不同的组件
 
 ~~~html
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -37,7 +45,8 @@ const Bar = { template: '<div>bar</div>' }
 const routes = [
   { name: 'foo', 
     path: '/foo', //访问的路径
-   	component: Foo, //路径对应的组件
+   	component: Foo, // 路径对应的组件 
+  	components: {}  // 命名视图组件
     redirect:'/fol' //重定向，当访问foo路径时会被重定向到fol路径，显示fol组件的内容
   	alias: '/f'     //访问f时，地址为f，但内容是Foo的组件
     children:[{//嵌套路由的的配置
@@ -47,7 +56,7 @@ const routes = [
    		component: DOO, //嵌套路由路径对应的组件
     }]
   },
-  { path: '/bar:id', component: Bar } //id为动态路径参数 ，以冒号开头，作用：某种模式匹配到的所有路由共用同一个组件
+  { path: '/bar:id', component: Bar } //id为动态路径参数，参数在 ，以冒号开头，作用：某种模式匹配到的所有路由共用同一个组件
 ]
 
 // 3. 创建 router 实例，然后传 `routes` 配置
@@ -126,3 +135,25 @@ const router = new VueRouter({
 ##### 动态路径参数
 
 ##### 路由传参
+
+
+
+
+
+## 完整的导航解析流程
+
+1. 导航被触发。
+2. 在失活的组件里调用 `beforeRouteLeave` 守卫。
+3. 调用全局的 `beforeEach` 守卫。
+4. 在重用的组件里调用 `beforeRouteUpdate` 守卫 (2.2+)。
+5. 在路由配置里调用 `beforeEnter`。
+6. 解析异步路由组件。
+7. 在被激活的组件里调用 `beforeRouteEnter`。
+8. 调用全局的 `beforeResolve` 守卫 (2.5+)。
+9. 导航被确认。
+10. 调用全局的 `afterEach` 钩子。
+11. 触发 DOM 更新。
+12. 调用 `beforeRouteEnter` 守卫中传给 `next` 的回调函数，创建好的组件实例会作为回调函数的参数传入。
+
+### 几个守卫函数的参数及使用场景
+

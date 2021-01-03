@@ -47,7 +47,7 @@ sum.call.call(opt);
   - 一个call，是让call前面的元素执行
   - 两个及两个以上的call，是让call后面的元素执行
 
-```
+```js
 // 原理分析：
 Function.prototype.call = function callAA(){
     //1.把this中的“this”关键字修改为第一个参数值obj
