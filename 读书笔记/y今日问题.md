@@ -42,6 +42,8 @@ https://chrome.google.com/webstore/detail/bookmarks-checker/eeckiajfclogcacnhgig
 
  Object.assign(state.user, user)用法
 
+Object.keys()
+
 this.$emit('update:selectedProject', val) // 以该模式使父组件可以使用.sync修饰符以实现数据双向绑定
 
 vue style 深度选中器  
@@ -69,3 +71,34 @@ vue style 深度选中器
 
 
 jsx语法
+
+{
+
+​    path: 'pj-info/:pid',
+
+​    name: 'PjInfo',
+
+​    hidden: true,
+
+​    component: () =>
+
+​      import('@/views/project-manage/project-info/ThePjInfo'),
+
+​    meta: {
+
+​      roles: ['project_info'],
+
+​      title: '项目主页',
+
+​      icon: 'project_home',
+
+​    },
+
+  },
+
+message_ids.splice(message_ids.indexOf(item.message_id), 1)
+
+[{ "t": -1 },{ "t": -2}]
+
+axios取消请求
+

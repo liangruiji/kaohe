@@ -64,7 +64,9 @@ git branch --set-upstream-to=origin/远程分支名 本地分支名
 
 git branch --set-upstream 本地分支名 origin/远程分支名
 
+  remotes/origin/dev_vue_todo
 
+git branch --set-upstream-to=origin/dev_vue_todo develop
 
 git提交冲突
 
@@ -85,4 +87,24 @@ git merge合并分支时出现
 4.git cz
 
 5git push
+
+
+
+
+
+进不了测试服和线上，重连wifi，重连路由都没用，好像重启就可以
+
+cd /etc
+
+sudo vim hosts
+
+192.168.8.215 eye2.oa.com加进去
+
+
+
+ping opsv.oa.com 查看ip
+
+sudo vim hosts
+
+在ip上加入opsv.oa.com
 

@@ -14,7 +14,8 @@ close(){
 //父组件
 <button @click='show = !show'></button>
 <drag :visible='show'  @update:visible="val => show = val" />
-复制代码
+：xx.sync = "total"等价于 :xx="total" v-on : undate :xx= "total=$event"
+
 ```
 
 为了方便起见，vue 还提供了一种缩写形式， 即 `.sync` 修饰符
@@ -24,7 +25,6 @@ close(){
 <button @click='show = !show'></button>
 <drag :visible.sync='show'  />
 
-复制代码
 ```
 
 通过这种写法，当子组件执行 `close` 事件的时候，不仅改变了自己内部的 `isShow` 的值，而且还将 父组件的 `visible`的状态发生了改变.

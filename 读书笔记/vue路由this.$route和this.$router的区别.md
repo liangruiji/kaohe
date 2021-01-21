@@ -95,3 +95,5 @@ this.$router.go(-1) // 后退
 // 一般使用replace来做404页面
 this.$router.replace('/')
 ```
+
+cat hosts
