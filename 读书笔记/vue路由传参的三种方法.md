@@ -82,7 +82,7 @@ this.$route.params.id
 复制代码
 ```
 
-## 新发现
+## 新增组件中获得参数方式，路由配置中可直接设置为组件的props属性，不用this.$route获得
 
 现在的路由传参的方式没有改变，上述内容依然有效。组件内获取的方式增加了props方式接收，可以把参数传到props里了，功能更强大了。
 
@@ -124,13 +124,15 @@ const Describe= {
 // 对于包含命名视图的路由，你必须分别为每个命名视图添加 `props` 选项：
 //组件配置
 {
-  path: '/describe/:id',
+  path: '/describe/',
+  // 命名视图
   components: { default: Describe, sidebar: Sidebar },
+  // 分别对命名视图是否设置为组件属性
   props: { default: true, sidebar: false }
 }
 //单文件组件在props中获取
 const Describe= {
-    props: ['id'],
+    props: ['default','sidebar'],
     template: '<div>describe{{ id }}</div>'
 }
  //方式二 (这里需要注意如果在props中声明了id，这里方式获取会报undefined。)

@@ -1,6 +1,6 @@
 
 
-### 1.key
+#### 1.key
 
 - **预期**：`number | string | boolean (2.4.2 新增) | symbol (2.5.12 新增)`
 
@@ -37,7 +37,7 @@
 
   当 `text` 发生改变时，`<span>` 总是会被替换而不是被修改，因此会触发过渡。
 
-2.ref
+#### 2.ref
 
 `ref` 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 `$refs` 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例
 
@@ -49,13 +49,31 @@
 
 
 
-3.is
+#### 3.is
 
-4.slot
+用于动态组件，可切换组件
 
-5.slot-scope
+~~~
+<!-- 当 `currentView` 改变时，组件也跟着改变 -->
+<component v-bind:is="currentView"></component>
+<!-- 这样做是有必要的，因为 `<my-row>` 放在一个 -->
+<!-- `<table>` 内可能无效且被放置到外面 -->
+<table>
+  <tr is="my-row"></tr>
+</table>
+~~~
 
-6.scope
+#### 4.slot
+
+用于标记往哪个具名插槽中插入子组件内容。
+
+~~~
+<div slot="具名插槽名字"> // 具名插槽名字 在组件的<slot>内的name属性中
+~~~
+
+#### 5.slot-scope
+
+#### 6.scope
 
 **被 2.5.0 新增的 [slot-scope](https://cn.vuejs.org/v2/api/#slot-scope) 取代。推荐 2.6.0 新增的 [v-slot](https://cn.vuejs.org/v2/api/#v-slot)。**
 

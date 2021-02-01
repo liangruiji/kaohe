@@ -2,6 +2,10 @@
 
 ### 1.router-link标签
 
+target="_blank"新页面
+
+target="_self" 本页面 
+
 ~~~
 <router-link tag="a" target="_blank" to="/about">新品</router-link>
 ~~~
