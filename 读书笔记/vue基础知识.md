@@ -46,6 +46,9 @@ var app = new Vue({
 	
 	beforeDestory(){}//生命周期函数：表示实例已经从运行阶段进入摧毁阶段
 	destroyed(){}//生命周期函数：表示组件已经完全被摧毁了
+
+	activated(){} // 被 keep-alive 缓存的组件激活时调用
+	deactivated(){} // 被 keep-alive 缓存的组件停用时调用
 })
 ~~~
 

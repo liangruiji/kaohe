@@ -101,13 +101,35 @@ const router = new VueRouter({
 
 三个：
 
-组件路由守卫 `beforeRouteLeave` 守卫（在失活的组件里调用）
+组件守卫 `beforeRouteLeave` 守卫（在失活的组件里调用）
 
-组件路由守卫 `beforeRouteUpdate` 守卫 (在重用的组件里调用)。
+组件守卫 `beforeRouteUpdate` 守卫 (在重用的组件里调用)。
 
-组件路由守卫 `beforeRouteEnter`（在被激活的组件里调用）
+组件守卫 `beforeRouteEnter`（在被激活的组件里调用）
+
+
 
 位置：在组件内配置，自动在某个时间调用
+
+**注意**：
+
+1.只有在路由配置中对应的组件中才能使用
+
+2.`beforeRouteEnter` 守卫 **不能** 访问 `this`，因为守卫在导航确认前被调用，因此即将登场的新组件还没被创建。
+
+不过，你可以通过传一个回调给 `next`来访问组件实例。在导航被确认的时候执行回调，并且把组件实例作为回调方法的参数。
+
+```js
+beforeRouteEnter (to, from, next) {
+  next(vm => {
+    // 通过 `vm` 访问组件实例
+  })
+}
+```
+
+ `beforeRouteEnter` 是支持给 `next` 传递回调的唯一守卫。对于 `beforeRouteUpdate` 和 `beforeRouteLeave` 来说，`this` 已经可用了，所以**不支持**传递回调，因为没有必要了。
+
+
 
 
 
