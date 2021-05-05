@@ -1,3 +1,15 @@
+https://www.cnblogs.com/xlys/
+
+render函数的作用；
+
+**render 函数和 template 一样，都是用来创建 HTML 模板的。**
+
+但是有的时候使用 template，可能会写很多重复的代码，render 函数写法比较简洁
+
+crateElement函数的三个参数。
+
+
+
 `createElement` 接受的参数：(标签名,！属性数据对象,！子节点)
 
 1.全局组件中使用

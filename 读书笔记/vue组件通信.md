@@ -1,4 +1,8 @@
-# `Vue props用法详解
+[TOC]
+
+
+
+### Vue props用法详解
 
 [![img](https://upload.jianshu.io/users/upload_avatars/1638086/43d7c694-e113-46db-bb5b-b19642d5f95f.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp)](https://www.jianshu.com/u/7524d9ad5181)
 
@@ -45,9 +49,9 @@
 
 3.在C组件中使用 this.$attrs 或者 this.$listeners 就可以访问A组件的属性了
 
-# Vue props用法详解
+### Vue props用法详解
 
-### 总结：
+#### 总结：
 
 组件接受的选项之一 props 是 Vue 中非常重要的一个选项。父子组件的关系可以总结为：
 
@@ -123,7 +127,7 @@ const post={
 
 
 
-## 父子级组件
+#### 父子级组件
 
 比如我们需要创建两个组件 parent 和 child。需要保证每个组件可以在相对隔离的环境中书写，这样也能提高组件的可维护性。
 
@@ -165,7 +169,7 @@ new Vue({
 这里的 childNode 定义的 template 是一个 div，并且内容是"childNode"字符串。
 而在 parentNode 的 template 中定义了 div 的 class 名叫 parent 并且包含了两个 child 组件。
 
-## 静态 props
+#### 静态 props
 
 组件实例的作用域是孤立的。这意味着不能（也不应该）在子组件的模板中直接饮用父组件的数据。要让子组件使用父组件的数据，需要通过子组件的 props 选项。
 
@@ -206,7 +210,7 @@ var parentNode = {
 
 子组件 props 属性声明时，使用小驼峰或者中划线写法都可以；而子组件的模板使用从父组件传来的变量时，需要使用对应的小驼峰写法。别担心，Vue 能够正确识别出小驼峰和下划线命名法混用的变量，如这里的`forChildMsg`和`for-child-msg`是同一值。
 
-## 动态 props
+#### 动态 props
 
 在模板中，要动态地绑定父组件的数据到子组件模板的 props，和绑定 Html 标签特性一样，使用`v-bind`绑定；
 
@@ -237,7 +241,7 @@ var parentNode = {
 
 在父组件的 data 的 return 数据中的 childMsg1 和 childMsg2 会被传入子组件中，
 
-## props 验证
+#### props 验证
 
 验证传入的 props 参数的数据规格，如果不符合数据规格，Vue 会发出警告。
 
@@ -324,7 +328,7 @@ let childNode = {
 
 在这里我们给`for-child-msg`变量设置了`validator`函数，并且要求传入的值必须大于 100，否则报出警告。
 
-## 单向数据流
+#### 单向数据流
 
 props 是单向绑定的：当父组件的属性变化时，将传导给子组件，但是不会反过来。这是为了防止子组件五一修改父组件的状态。
 
@@ -372,7 +376,7 @@ let parentNode = {
 
 > [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "forChildMsg"
 
-## 修改 props 数据
+#### 修改 props 数据
 
 通常有两种原因：
 
@@ -381,7 +385,7 @@ let parentNode = {
 
 应对办法是
 
-1. 定义一个局部变量，并用 prop 的值初始化它
+1.定义一个局部变量，并用 prop 的值初始化它
 
 但是由于定义的 ownChildMsg 只能接受 forChildMsg 的初始值，当父组件要传递的值变化发生时，ownChildMsg 无法收到更新。
 
@@ -409,7 +413,7 @@ let childNode = {
 
 这里我们加了一个<p>用于查看 ownChildMsg 数据是否变化，结果发现只有默认值传递给了 ownChildMsg，父组件改变只会变化到 forChildMsg，不会修改 ownChildMsg。
 
-1. 定义一个计算属性，处理 prop 的值并返回
+2.定义一个计算属性，处理 prop 的值并返回
 
 由于是计算属性，所以只能显示值，不能设置值。我们这里设置的是一旦从父组件修改了 forChildMsg 数据，我们就把 forChildMsg 加上一个字符串"---ownChildMsg"，然后显示在屏幕上。这时是可以每当父组件修改了新数据，都会更新 ownChildMsg 数据的。
 

@@ -51,5 +51,5 @@ vue的数据data有更新时
 
 B路由参数改变时，组件复用时
 
-![image-20210205152936019](/Users/telking/kaohe/读书笔记/img/A路由参数改变时.png)
+![image-20210205152936019](./img/A路由参数改变时.png)
 

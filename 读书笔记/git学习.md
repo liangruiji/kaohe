@@ -45,18 +45,19 @@ git branch -d dev-feat-ID1002594
 
 其他
 
-删除远程分支
+##### 删除远程分支
 
 git push -d origin dev-xxx
 
-改下分支名
+##### 改下分支名
+
  git branch -m vue_lrj dev_vue_lrj
 
-查看本地分支追踪的远程分支
+##### 查看本地分支追踪的远程分支
 
 git branch -vv
 
-更改本地分支追踪的远程分支
+##### 更改本地分支追踪的远程分支
 
 git branch --set-upstream-to=origin/远程分支名 本地分支名
 
@@ -68,7 +69,7 @@ git branch --set-upstream 本地分支名 origin/远程分支名
 
 git branch --set-upstream-to=origin/dev_vue_todo develop
 
-git提交冲突
+##### git提交冲突
 
 git merge合并分支时出现
 
@@ -90,6 +91,43 @@ git merge合并分支时出现
 
 
 
+如果做着需求的时候，群里有人新bug
+git stash list 查看缓存列表
+
+git stash 把当前更改加入到缓存
+
+ git stash list  查看缓存列表
+
+git checkout develop
+
+git pull 
+
+git checkout -b dev_bug
+
+git add .
+
+git cz
+
+git checkout develop
+
+git merge dev-bug
+
+git push
+
+release ops
+
+git checkout dev_feat_ID0
+
+
+
+git mereg develop 把修改bug后的合并过来
+
+git stash pop  把暂存的拉取下来
+
+
+
+
+
 
 
 进不了测试服和线上，重连wifi，重连路由都没用，好像重启就可以
@@ -107,4 +145,61 @@ ping opsv.oa.com 查看ip
 sudo vim hosts
 
 在ip上加入opsv.oa.com
+
+
+
+vpn配置
+
+~~~
+# ------------------------------
+#  设置VPN客户端配置
+# ------------------------------
+client
+dev tun
+proto udp
+remote telking.3322.org 51194
+# remote vpn.telking.com 51194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+# 自己的名字
+cert LiangRuiJi.crt 
+key LiangRuiJi.key
+verb 3
+# up /etc/openvpn/update-resolv-conf  # 根据Server推过来的 dhcp-option 更新域名解析设置,Linux系统要打开这两行，Mac系统不能打开
+down /etc/openvpn/update-resolv-conf
+# 连接和断开VPN时候，清空本地缓存
+route-up "/usr/bin/sudo killall -HUP mDNSResponder"
+# 压缩传输
+compress lzo
+# 不存储验证缓存
+auth-nocache
+remote-cert-tls server
+# cipher AES-256-CBC
+~~~
+
+~~~
+# ------------------------------
+#  设置VPN客户端配置
+# ------------------------------
+client
+dev tun
+proto udp
+remote vpn.telking.com 51194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+cert LiangRuiJi.crt
+key LiangRuiJi.key
+verb 3
+# 不存储验证缓存
+auth-nocache
+remote-cert-tls server
+# cipher AES-256-CBC
+
+~~~
 

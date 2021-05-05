@@ -110,7 +110,7 @@ Promise.all([runB(),runA(),runC()]).then((res)=>{console.log(res)}) //这里我�
 
 2.那我们再来看看 async和await
 
-async function getDate(){
+ function getDate(){
        var runb=await runB();
        var runa=await runA();
        var runc=await runC();

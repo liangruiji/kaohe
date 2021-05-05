@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2, 
+  "name": "cliper", 
+  "version": "1",
+ 
+  "background": { 
+			"scripts":["js/background.js"]
+
+    },
+    "permissions":[
+      "tabs",
+      "*://*.google.com/*",
+      "activeTab",
+      "storage"
+    ],
+    "content_scripts":[
+      {
+        "matches":[
+           "<all_urls>"
+        ],
+        "js":["js/conkkk.js", "js/test.js"]
+      }
+    ]
+  
+
+
+}

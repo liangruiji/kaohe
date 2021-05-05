@@ -1,8 +1,8 @@
 现在不需要深究，只需要这三点
 
-1.构造函数有prototype属性，指向原型，原型中的方法，所有实例都能继承，为公共方法，比如Array.prototype中存有很多数组的方法
+1.函数有prototype属性，指向原型，是当他作为构造函数时，能继承给实例的内容，原型中的方法，所有实例都能继承，为公共方法，比如Array.prototype中存有很多数组的方法
 
-2.实例有\__proto__属性，指向构造函数的prototype属性(即是指向原型)
+2.实例对象有\__proto__属性，是构造函数继承过来的内容，指向构造函数的prototype属性(即是指向原型)
 
 3.原型的constructor属性指向构造1函数
 
@@ -74,3 +74,76 @@ function b(){}
 ~~~
 
 null+object+function
+
+
+
+
+
+理解：
+
+函数prototype属性，是指函数构建的对象能继承的属性
+对象有_ proto _属性，是指继承下来的属性
+
+
+
+Object中与原型有关的静态方法
+**Object.getPrototypeOf()**  返回一个对象的继承下来属性_ proto _,即是构造函数可以继承的属性prototype
+
+**Object.setPrototypeOf()**设置一个对象的_ proto _属性，即为现有对象设置原型，然后返回一个新对象。这个可以接收两个参数，第一个是现有对象，第二个是原型对象。
+
+**Object.create()** 从原型对象生成新的对象实例,可以代替new命令。它接受一个参数，这个参数为所要继承的原型对象，然后返回一个实例对象。
+
+Object中与原型有关的原型方法
+
+**Object.prototype.isPrototypeOf()** 用于判断一个对象对象是否是另外一个对象的原型。
+
+
+
+
+
+控制台打印对象
+颜色暗淡的是不可枚举属性，可使用`Object.defineProperty(obj, prop, descriptor)`进行设置,Object.getOwnPropertyDescriptor(object1, 'property1')查看
+颜色正常的是可枚举属性
+
+~~~javascript
+Object.defineProperty(obj, prop, descriptor) //创建、修改新属性
+
+obj：{}, // 需要修改的对象
+
+prop："", // 需求修改或创建的属性
+
+descriptor:{// 属性描述符：数据描述符和存取描述符,两种不能同时存在
+
+configurable:false, //为 true 时，该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除。
+enumerable:false , // 为 true 时，该属性才会出现在对象的枚举属性中。
+
+// 数据描述符
+value:undefined // 属性值
+writable:false // 为 true 时，属性值才能被赋值运算符改变。
+// 存取描述符
+get:function(){} // 属性的 getter 函数,如果没有 getter，则为 undefined。当访问该属性时，会调用此函数。该函数的返回值会被用作属性的值。
+
+set:function(){}//属性的 setter 函数，如果没有 setter，则为 undefined。当属性值被修改时，会调用此函数。该方法接受一个参数（也就是被赋予的新值）
+}
+
+~~~
+
+~~~
+const object1 = {};
+
+Object.defineProperty(object1, 'property1', {
+  value: 42,
+  writable: false
+});
+
+object1.property1 = 77;
+// throws an error in strict mode
+
+console.log(object1.property1);
+// expected output: 42
+~~~
+
+![image-20210401234609708](/web/www/kaohe/读书笔记/img/image-20210401234609708.png)
+
+![图片描述](https://segmentfault.com/img/bVlvcE)
+

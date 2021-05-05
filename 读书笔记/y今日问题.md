@@ -229,3 +229,248 @@ https://juejin.cn/post/6844904143149072398#heading-0
       })
 ~~~
 
+
+
+零宽断言
+
+target.match(/((?<=target=).*(?=&token))/gi)?.[0] || '/'
+
+
+
+css清除浮动
+
+视图可编辑移动
+
+
+
+函数化组件
+
+ 组件的 functional: true 选项
+
+render的第二个参数
+
+~~~
+  <el-row :gutter="10">
+      <el-col :span="18">
+        <div class="left">
+          <!-- 侧边栏控制图标 -->
+          <hamburger
+            id="hamburger-container"
+            :is-active="sidebar.opened"
+            class="hamburger-container"
+            @toggleClick="toggleSideBar"
+          />
+          <!-- 历史标签 -->
+          <scroll-pane ref="scrollPane" class="tags-view-wrapper">
+            <router-link
+              v-for="tag in visitedViews"
+              ref="tag"
+              :key="tag.fullPath"
+              :class="isActive(tag) ? 'active' : ''"
+              :to="{
+                path: tag.path,
+                query: tag.query,
+                fullPath: tag.fullPath,
+              }"
+              tag="span"
+              class="tags-view-item"
+              @click.middle.native="
+                !isAffix(tag) ? closeSelectedTag(tag) : ''
+              "
+              @contextmenu.prevent.native="openMenu(tag, $event)"
+            >
+              {{
+                tag.name == 'ProjectLogs'
+                  ? pidToPj(tag.pid)
+                  : tag.title
+              }}
+              <span
+                v-if="!isAffix(tag)"
+                class="el-icon-close"
+                @click.prevent.stop="closeSelectedTag(tag)"
+              />
+            </router-link>
+          </scroll-pane>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="right">
+          <div>
+            <el-button
+              type="primary"
+              size="mini"
+              @click="closeAllTags"
+            >
+              清空标签
+            </el-button>
+          </div>
+
+          <navbar />
+        </div>
+      </el-col>
+    </el-row>
+~~~
+
+https://juejin.cn/post/6844903920637050888
+
+~~~
+
+    
+    jump(id) {
+      this.$router.push({ name: this.routerName, query: { pid: id } })
+      this.$store.dispatch('project/addProject', id)
+      this.$emit('update:selectedProject', id) // 以该模式使父组件可以使用.sync修饰符以实现数据双向绑定
+      this.setLocalProjects(id)
+      this.getLocalProjects(id)
+      this.$emit('change', id)
+    },
+~~~
+
+~~~
+<style lang="scss" scoped>
+.item {
+  width: 110px;
+  height: 34px;
+  text-align: center;
+  margin: 0 10px 10px 0;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4px 0 0 10px;
+}
+.cur {
+  background-color: red;
+}
+</style>
+
+~~~
+
+~~~
+ host_column: [
+        // 头部主机面板表格配置
+        {
+          label: '主机名',
+          minWidth: '150',
+          render: (h, scope) => {
+            return (
+              <el-popover
+                width="250"
+                placement="top"
+                trigger="hover"
+                popper-class="host_popover"
+              >
+                <div style="font-size:12px" class="test">
+                  <el-row gutter={5}>
+                    <el-col span={8}>主机类型：</el-col>
+                    <el-col span={16}>
+                      <span class="test">
+                        {scope.row.htype || '-'}
+                      </span>
+                    </el-col>
+                  </el-row>
+                  <el-row gutter={5}>
+                    <el-col span={8}>操作系统：</el-col>
+                    <el-col span={16}>
+                      <span>{scope.row.system_detail || '-'}</span>
+                    </el-col>
+                  </el-row>
+                </div>
+
+                <span slot="reference">
+                  {scope.row.host_name || '-'}
+                </span>
+              </el-popover>
+            )
+          },
+        },
+~~~
+
+elpopover插槽里设置类失效
+
+
+
+
+
+css3 calc() vw 获得浏览器宽度与高度
+
+![image-20210309161745467](/Users/telking/Library/Application Support/typora-user-images/image-20210309161745467.png)
+
+ 熊铭浩 3-1 上午 10:18
+ https://dev.com:1997/test-login 然后这里登录，不过最好用chrome无痕模式
+
+ 熊铭浩 3-1 上午 10:18
+ 然后你在用你的管理员账号给这个测试账号分配项目去测试，不要给测试账号分配管理员权限
+
+~~~
+{
+          label: '网络流量',
+          width: '50px',
+          align: 'center',
+          render: (h, scope) => {
+            const projects = scope.row.projects
+            if (projects && projects.length) {
+              return (
+                <el-popover placement="top" trigger="hover">
+                 <div>主机启动时间</div>
+                  <svg-icon slot="reference" icon-class="view" />
+                </el-popover>
+              )
+            } else {
+              return <span>-</span>
+            }
+          },
+        },
+~~~
+
+
+
+
+
+400
+
+200
+
+2
+
+8
+
+490
+
+4
+
+2200
+
+设置6小时前的时间
+
+start.setTime(start.getTime() - 3600 * 1000 * 6)
+
+
+
+返回的数据接口深度不一致，只取最后一层数据
+
+v-cloak用法
+异步操作变同步操作的方法
+
+Object.getPrototypeOf(对象)返回对象的proto属性
+
+korofileheader vs code插件，用于头部与函数注释，ctrl+command+t
+
+
+
+new Function与eval() 作用
+
+https://fanyi.caiyunapp.com/#/web
+
+沙拉查词也很好用，我用蛮久了，https://saladict.crimx.com/
+
+
+有限状态机
+
+```
+Math.sign(3);  
+```
