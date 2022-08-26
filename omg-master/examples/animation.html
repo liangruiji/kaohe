@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>omg.js | Animation</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		#canvas {
+			margin: 0;
+			background-color: #fff;
+		}
+
+		#fps {
+			position: absolute;
+			width: 100px;
+			height: 40px;
+			font-size: 20px;
+			line-break: 40px;
+			text-align: center;
+			z-index: 10;
+			top: 0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+<div id="fps"></div>
+<div class="container">
+		<canvas id="canvas"></canvas>
+</div>
+<script src="./omg.min.js"></script>
+<script>
+	var w = document.body.clientWidth;
+	var h = document.body.clientHeight;
+	var stage = omg({
+		element: document.getElementById('canvas'),
+		width: w,
+		height: h
+	});
+
+	stage.init();
+
+	var ele = document.getElementById('fps');
+	stage.fpsOn(function(fps) {
+		ele.innerHTML = 'fps: ' + fps;
+	});
+
+	var list = [];
+
+	function createCircle() {
+		var color = 'rgba('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', ' + Math.random() * 1 + ')'
+		var circle = stage.graphs.arc({
+			x: w / 2,
+			y: h / 2,
+			radius: 0,
+			color: color,
+			style: 'fill'
+		});
+		circle.open = false;
+		list.push(circle);
+		stage.addChild(circle);
+	}
+
+	for(var i = 0; i < 200; i ++) {
+		createCircle();
+	}
+
+	stage.show();
+
+	function animation() {
+		list.forEach(function(graph, i) {
+			graph.animateTo({
+				x: graph.open ? w / 2 : Math.random() * w,
+				y: graph.open ? h / 2 : Math.random() * h,
+				radius: graph.open ? 0 : Math.random() * 10 + 5
+			}, {
+				easing: 'cubicInOut',
+				onFinish: function(keys) {
+					graph.open = !graph.open;
+				}
+			});
+		});
+	}
+
+	animation();
+
+ 	stage.finishAnimation = function() {
+		setTimeout(animation, 50);
+	}
+</script>
+</body>
+</html>

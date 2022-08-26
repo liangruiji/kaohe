@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>omg.js | Scale</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #canvas {
+      margin: 0;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+    <canvas id="canvas"></canvas>
+</div>
+<script src="./omg.min.js"></script>
+<script>
+  var stage = omg({
+    element: document.getElementById('canvas'),
+    width: document.body.clientWidth,
+    height: document.body.clientHeight,
+    enableGlobalTranslate: true,
+    enableGlobalScale: false
+  });
+
+  stage.init();
+
+  var group = stage.group({
+    x: 100,
+    y: 100,
+    width: 200,
+    height: 210,
+    background: {
+      color: '#000'
+    },
+    autoSize: {
+      padding: 10
+    },
+    zindex: 10
+  }).on('mouseenter', function(cur) {
+    cur.background.color = '#444';
+    stage.redraw();
+  }).on('mouseleave', function(cur) {
+    cur.background.color = '#000';
+    stage.redraw();
+  });
+
+  stage.addChild(group);
+
+  var childs = [];
+  for(var i = 0;i < 5; i++) {
+    var child = stage.graphs.rectangle({
+      x: 10,
+      y: 40 * i + 10,
+      width: 180,
+      height: 30,
+      color: '#bbb'
+    }).on('mouseenter', function(cur) {
+      cur.color = '#ef4';
+      stage.redraw();
+    }).on('mouseleave', function(cur) {
+      cur.color = '#bbb';
+      stage.redraw();
+    });
+    childs.push(child);
+  }
+  group.add(childs);
+
+  var button = stage.graphs.arc({
+    x: 198,
+    y: 380,
+    radius: 20,
+    style: 'fill',
+    color: '#000'
+  }).on('mouseenter', function(cur) {
+    cur.color = '#222';
+    stage.element.style.cursor = 'pointer';
+    stage.redraw();
+  }).on('mouseleave', function(cur) {
+    cur.color = '#000';
+    stage.element.style.cursor = 'default';
+    stage.redraw();
+  }).on('mousedown', function(cur) {
+    if(group.width === 200 && !stage.animating) {
+      group.animateTo({
+        width: 400
+      }, {
+        easing: 'quintInOut',
+        duration: 300
+      });
+      group.children.forEach(function(child, i) {
+        child.animateTo({
+          width: 380
+        }, {
+          easing: 'quintInOut',
+          duration: 300,
+          delay: 50 * (i + 1)
+        });
+      });
+    } else if(group.width === 400 && !stage.animating) {
+      group.children.forEach(function(child, i) {
+        child.animateTo({
+          width: 180
+        }, {
+          easing: 'quintInOut',
+          duration: 300,
+          delay: 50 * (5 - i)
+        });
+      });
+      group.animateTo({
+        width: 200
+      }, {
+        easing: 'quintInOut',
+        duration: 300,
+        delay: 50 * 5
+      });
+    }
+  });
+
+  var text = stage.graphs.text({
+		x: 135,
+		y: 40,
+		width: 150,
+		height: 40,
+		fontSize: 20,
+		text: 'Click the circle',
+		color: '#000'
+	}).config({
+		fixed: true,
+		bg: true
+  });
+
+  stage.addChild([button, text]);
+  stage.show();
+
+</script>
+</body>
+</html>

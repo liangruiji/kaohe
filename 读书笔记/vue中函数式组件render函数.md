@@ -25,7 +25,7 @@ Vue.component('全局组件名',{
   	'div',
 
   	// {Object}
-  	// 一个与模板中 attribute 对应的数据对象。可选。
+  	// 一个与模板中 attribute 对应的数据对象，如props。可选。
   	{
    		// 这里可以设置class之类的属性
   	},

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>omg.js | Shapes</title>
+	<style>
+		#fps {
+			position: absolute;
+			top: 3px;
+			left: 394px;
+		}
+		#canvas {
+			background-color: #ccc;
+		}
+		.drag li {
+			list-style: none;
+			width: 200px;
+			height: 40px;
+			background-color: #ef8376;
+		}
+	</style>
+</head>
+<body>
+<div id="fps"></div>
+<div class="container">
+		<canvas id="canvas"></canvas>
+</div>
+<script src="./omg.min.js"></script>
+<script>
+  var flag;
+
+	var start = document.getElementById('start');
+	var stop = document.getElementById('stop');
+	var stage = omg({
+		element: document.getElementById('canvas'),
+		width: 500,
+		height: 500,
+		enableGlobalTranslate: true,
+		prepareImage: true
+	});
+
+	stage.init();
+
+	var polygon = stage.graphs.polygon({
+		matrix: [[310, 120], [360, 120], [348, 230], [250, 340], [146, 200]],
+		color: 'black',
+		type: 'fill'
+	}).config({
+		zindex: 11,
+		drag: true
+	}).on('mouseenter', function() {
+		polygon.color = 'green';
+		stage.redraw();
+	}).on('mouseleave', function() {
+		polygon.color = 'black';
+		stage.redraw();
+	});
+
+	function bounce(cur, radius) {
+		cur.animateTo({
+			radius: radius
+		}, {
+			duration: 300,
+			easing: 'bounceOut'
+		});
+	}
+
+	var arca = stage.graphs.arc({
+		x: 130,
+		y: 380,
+		radius: 100,
+		startAngle: -45,
+		endAngle: 45,
+		color: '#e1a376',
+		style: 'fill'
+	}).config({
+		drag: false,
+		changeIndex: true
+	}).on('mouseenter', function(cur) {
+		bounce(cur, 130);
+		stage.redraw();
+	}).on('mouseleave', function(cur) {
+		bounce(cur, 100);
+		stage.redraw();
+	});
+
+	var arcb = stage.graphs.arc({
+		x: 130,
+		y: 380,
+		radius: 100,
+		startAngle: 45,
+		endAngle: 165,
+		color: '#512854',
+		style: 'fill'
+	}).config({
+		drag: false,
+		changeIndex: true
+	}).on('mouseenter', function(cur) {
+		bounce(cur, 130);
+		stage.redraw();
+	}).on('mouseleave', function(cur) {
+		bounce(cur, 100);
+		stage.redraw();
+	});
+
+	var arcc = stage.graphs.arc({
+		x: 130,
+		y: 380,
+		radius: 100,
+		startAngle: 165,
+		endAngle: -45,
+		color: '#fd8915',
+		style: 'fill'
+	}).config({
+		drag: false,
+		changeIndex: true
+	}).on('mouseenter', function(cur) {
+		bounce(cur, 130);
+		stage.redraw();
+	}).on('mouseleave', function(cur) {
+		bounce(cur, 100);
+		stage.redraw();
+	});
+
+	var image = stage.graphs.image({
+		x: 0,
+		y: 0,
+		width: 800,
+		height: 500,
+		src: './img/timg.jpg'
+	}).config({
+		bg: true,
+		fixed: true,
+		zindex: -1
+	});
+
+	var text = stage.graphs.text({
+		x: 300,
+		y: 40,
+		width: 150,
+		height: 40,
+		paddingTop: 8, //text padding top
+		center: true, 
+		background: {
+			color: 'blue'
+		}, // optional
+		fontSize: 20,
+		text: 'Hello World',
+		color: '#fff'
+	}).config({
+		fixed: true
+	});
+
+	var image3 = stage.graphs.image({
+		x: 300,
+		y: 200,
+		width: 97,
+		height: 110,
+		sliceX: 5,
+		sliceY: 0,
+		sliceWidth: 97,
+		sliceHeight: 110,
+		src: './img/action.png'
+	}).on('mousedown', function() {
+		console.log('image3');
+	}).config({
+		drag: true,
+		changeIndex: true
+	});
+
+	var arc = stage.graphs.arc({
+		x: 400,
+		y: 400,
+		radius: 30,
+		color: 'rgba(255, 255, 255, 0.5)',
+		style: 'fill'
+	}).on('mouseenter', function() {
+		stage.element.style.cursor = 'pointer';
+	}).on('mouseleave', function() {
+		stage.element.style.cursor = 'default';
+	}).on('dragend', function() {
+		arc.moveX = 0;
+		arc.moveY = 0;
+		stage.redraw();
+	}).config({
+		drag: true,
+		changeIndex: true,
+		fixed: true
+	});
+
+	var arc2 = stage.graphs.arc({
+		x: 400,
+		y: 400,
+		radius: 80,
+		color: 'rgba(255, 255, 255, 0.8)',
+		style: 'stroke'
+	}).config({
+		fixed: true,
+		bg: true
+	});
+
+	stage.addChild([image, text, image3, arc2, arc, arca, arcb, arcc, polygon]);
+
+	var line = stage.graphs.line({
+		matrix: [
+			[10, 60], 
+			[100, 180],
+			[40, 50], 
+			[80, 180], 
+			[90, 80],
+			[110, 100], 
+			[140, 50],
+			[260, 180]
+		],
+		lineWidth: 3,
+		color: '#ef8376'
+	}).on('mouseenter mousemove', function(cur) {
+		cur.lineWidth = 8;
+		cur.color = '#ccc';
+		stage.redraw();
+		stage.element.style.cursor = 'pointer';
+	}).on('mouseleave', function(cur) {
+		cur.color = '#ef8376';
+		cur.lineWidth = 4;
+		stage.redraw();
+		stage.element.style.cursor = 'default';
+	});
+
+	var a = stage.graphs.rectangle({
+		x: 120,
+		y: 120,
+		width: 100,
+		height: 100,
+		color: 'red',
+		hide: true
+	}).config({
+		drag: true,
+		changeIndex: true
+	}).on('mouseenter', function(cur) {
+		cur.color = 'blue';
+		stage.element.style.cursor = 'pointer';
+		stage.redraw();
+	}).on('mouseleave', function(cur) {
+		cur.color = 'red';
+		stage.element.style.cursor = 'default';
+		stage.redraw();
+	});
+
+	stage.addChild([line]);
+
+	stage.show();
+
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-#### 元素属性中的距离有以下6对：
+##### 元素属性中的距离有以下6对：
 
 ~~~js
 scrollLeft: 设置或获取位于对象左边界和窗口中可见内容的最左端之间的距离
@@ -20,7 +20,7 @@ scrollWidth: 获取对象的滚动宽度
 scrollHeight: 获取对象的滚动高度。
 ~~~
 
-#### 鼠标事件中的各种“距离”
+##### 鼠标事件中的各种“距离”
 
 ~~~
 event.clientX：相对浏览器左上角的水平坐标
@@ -45,7 +45,7 @@ x：和pageX一样，用于兼容IE8及以前浏览器
 y：和pageY一样，用于兼容IE8及以前浏览器
 ~~~
 
-#### getBoundingClientRect()
+##### getBoundingClientRect()
 
 `getBoundingClientRect`用于获得页面中某个元素的左，上，右和下分别相对浏览器视窗的位置。`getBoundingClientRect`是`DOM`元素到浏览器可视范围的距离（不包含文档卷起的部分）。
 
@@ -93,3 +93,26 @@ this.$nextTick(()=>{
    this.$refs.ulTxtBox.scrollTop = this.$refs.ulTxtBox.scrollHeight
 })
 ```
+
+~~~
+//获取可视区宽高 // 三个还是有区别的
+var w =
+  window.innerWidth ||
+  document.documentElement.clientWidth ||
+  document.body.clientWidth;
+var h =
+  window.innerHeight ||
+  document.documentElement.clientHeight ||
+  document.body.clientHeight;
+
+// 屏幕尺寸
+window.screen.width; //ie 不明
+window.screen.height; //ie 不明
+~~~
+
+~~~
+function getStyle(ele, cla) {
+  return window.getComputedStyle ? window.getComputedStyle(ele, cla || null) : ele.currentStyle
+}
+~~~
+

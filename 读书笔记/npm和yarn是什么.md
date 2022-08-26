@@ -1,6 +1,6 @@
 
 
-# https://zhuanlan.zhihu.com/p/24357770
+##### https://zhuanlan.zhihu.com/p/24357770
 
 当一个网站依赖的代码越来越多，程序员发现这是一件很麻烦的事情：
 
@@ -17,7 +17,7 @@
 
 这个工具就是他用 JavaScript （运行在 Node.js 上）写的 npm，全称是 Node Package Manager
 
-## Yarn是什么？
+##### Yarn是什么？
 
 “Yarn是由Facebook、Google、Exponent 和 Tilde 联合推出了一个新的 JS 包管理工具 ，正如[官方文档](https://link.zhihu.com/?target=https%3A//code.facebook.com/posts/1840075619545360)中写的，Yarn 是为了弥补 npm 的一些缺陷而出现的。”这句话让我想起了使用npm时的坑了：
 \- `npm install`的时候**巨慢**。特别是新的项目拉下来要等半天，删除node_modules，重新install的时候依旧如此。

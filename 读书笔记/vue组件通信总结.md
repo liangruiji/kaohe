@@ -46,7 +46,7 @@ this.$emit("事件名",传替的值)
 
 v-on:事件名=dosomething  //也可以通过$event访问这个值
 
-~~~vue
+~~~html
 father.vue
 <template>
   <div class="section">

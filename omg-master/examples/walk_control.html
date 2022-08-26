@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>omg.js | Walk control</title>
+	<style>
+		#fps {
+			position: absolute;
+			top: 3px;
+			left: 436px;
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+			color: #fff;
+			font-weight: 200;
+		}
+		#canvas {
+			background-color: #ccc;
+		}
+		.drag li {
+			list-style: none;
+			width: 200px;
+			height: 40px;
+			background-color: #ef8376;
+		}
+	</style>
+</head>
+<body>
+<div id="fps"></div>
+<div class="container">
+		<canvas id="canvas"></canvas>
+</div>
+<script src="./omg.min.js"></script>
+<script>
+  var flag, direction;
+
+	var start = document.getElementById('start');
+	var stop = document.getElementById('stop');
+	var stage = omg({
+		element: document.getElementById('canvas'),
+		width: 500,
+		height: 500,
+		enableGlobalTranslate: true,
+		prepareImage: true
+	});
+
+	stage.init();
+
+	var fpsEle = document.getElementById('fps');
+
+	stage.fpsOn(function(fps) {
+		fpsEle.innerHTML = 'FPS: ' + fps;
+	});
+
+
+	var image = stage.graphs.image({
+		x: 0,
+		y: 0,
+		width: 800,
+		height: 500,
+		src: './img/timg.jpg'
+	}).config({
+		bg: true,
+		fixed: true
+	});
+
+	var image3 = stage.graphs.image({
+		x: 200,
+		y: 200,
+		width: 97,
+		height: 110,
+		sliceX: 5,
+		sliceY: 0,
+		sliceWidth: 97,
+		sliceHeight: 110,
+		src: './img/action.png'
+	}).on('mousedown', function() {
+		console.log('image3');
+	}).config({
+		drag: true
+	});
+
+	var arc = stage.graphs.arc({
+		x: 400,
+		y: 400,
+		radius: 30,
+		color: 'rgba(255, 255, 255, 0.5)',
+		style: 'fill'
+	}).on('mouseenter', function() {
+		stage.element.style.cursor = 'pointer';
+	}).on('mouseleave', function() {
+		stage.element.style.cursor = 'default';
+	}).on('drag', function() {
+		var mx = arc.moveX,
+			my = arc.moveY,
+			r = arc2.radius;
+			if(Math.sqrt( mx*mx + my*my ) > r + 20) {
+				arc.moveX = 0;
+				arc.moveY = 0;
+			}
+			// direction
+			if(mx > 0 && my > 0) {
+				if(my / mx < 1) {
+					direction = 'right';
+					image3.sliceX = 3;
+					image3.sliceY = 238;
+					image3.sliceWidth = 64;
+					image3.width = 64;
+				} else {
+					direction = 'bottom';
+					image3.sliceX = 5;
+					image3.sliceY = 470;
+					image3.sliceWidth = 97;
+					image3.width = 97;
+				}
+			} else if(mx > 0 && my < 0) {
+				if(my / mx > -1) {
+					direction = 'right';
+					image3.sliceX = 3;
+					image3.sliceY = 238;
+					image3.sliceWidth = 64;
+					image3.width = 64;
+				} else{
+					direction = 'top';
+					image3.sliceX = 5;
+					image3.sliceY = 0;
+					image3.sliceWidth = 97;
+					image3.width = 97;
+				}
+			} else if(mx < 0 && my > 0) {
+				if(my / mx > -1) {
+					direction = 'left';
+					image3.sliceX = 7;
+					image3.sliceY = 718;
+					image3.sliceWidth = 82;
+					image3.width = 82;
+				} else {
+					direction = 'bottom';
+					image3.sliceX = 5;
+					image3.sliceY = 470;
+					image3.sliceWidth = 97;
+					image3.width = 97;
+				}
+			} else if(mx < 0 && my < 0) {
+				if(my / mx < 1) {
+					direction = 'left';
+					image3.sliceX = 7;
+					image3.sliceY = 718;
+					image3.sliceWidth = 82;
+					image3.width = 82;
+				} else {
+					direction = 'top';
+					image3.sliceX = 5;
+					image3.sliceY = 0;
+					image3.sliceWidth = 97;
+					image3.width = 97;
+				}
+			}
+
+	}).on('dragend', function() {
+		arc.moveX = 0;
+		arc.moveY = 0;
+		stage.redraw();
+	}).config({
+		drag: true,
+		changeIndex: true,
+		fixed: true
+	});
+
+	var arc2 = stage.graphs.arc({
+		x: 400,
+		y: 400,
+		radius: 80,
+		color: 'rgba(255, 255, 255, 0.8)',
+		style: 'stroke'
+	}).config({
+		fixed: true,
+		bg: true
+	});
+
+	stage.addChild([image, image3, arc2, arc]);
+	stage.show();
+
+	var num = 0;
+	function go() {
+
+		if(num % 4 === 0) {
+			if(direction === 'top') {
+				if(image3.sliceX > 102 * 6) {
+					image3.sliceX = 5;
+				} else {
+					image3.sliceX += 102;
+				}
+			} else if(direction === 'bottom') {
+				if(image3.sliceX > 104 * 6) {
+					image3.sliceX = 5;
+				} else {
+					image3.sliceX += 104;
+				}
+			} else if(direction === 'left') {
+				if(image3.sliceX > 82 * 6) {
+					image3.sliceX = 7;
+				} else {
+					image3.sliceX += 82;
+				}
+			} else if(direction === 'right') {
+				if(image3.sliceX > 64 * 6) {
+					image3.sliceX = 3;
+				} else {
+					image3.sliceX += 64;
+				}
+			} else {
+				if(image3.sliceX > 102 * 6) {
+					image3.sliceX = 5;
+				} else {
+					image3.sliceX += 102;
+				}
+			}
+
+			switch(direction) {
+				case 'top':
+					image3.moveY -= 2;
+					break;
+				case 'right':
+					image3.moveX += 2;
+					break;
+				case 'bottom':
+					image3.moveY += 2;
+					break;
+				case 'left':
+					image3.moveX -= 2;
+					break;
+				default:
+					image3.moveY -= 2;
+			}
+		}
+
+		if(image3.moveX < -200) {
+			image3.moveX = -200;
+		}
+
+		if(image3.moveY < -200) {
+			image3.moveY = -200;
+		}
+
+		if(image3.moveX > stage.width - 200 - 64) {
+			image3.moveX = stage.width - 200 - 64;
+		}
+
+		if(image3.moveY > stage.height - 200 - 110) {
+			image3.moveY = stage.height - 200 - 110;
+		}
+
+		stage.redraw();
+
+		num ++;
+	}
+
+	stage.animate(go)
+
+</script>
+</body>
+</html>

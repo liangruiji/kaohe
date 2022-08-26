@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+  <script>
+    //
+    // Declare Database
+    //
+    var db = new Dexie("test");
+    db.version(3).stores({
+      friends: "++id,name,age",
+      wwd: "[name+kk],name,kk,ll",
+      lll: "++id,*arr"
+    });
+
+    //
+    // Manipulate and Query Database
+    //
+    db.friends.add({
+      name: "Josephine",
+      age: 21
+    }).then(function () {
+      return db.friends.where("age").below(25).toArray();
+    }).then(function (youngFriends) {
+      alert("My young friends: " + JSON.stringify(youngFriends));
+    }).catch(function (e) {
+      alert("Error: " + (e.stack || e));
+    })
+
+    db.wwd.add({
+      name: 55,
+      kk: 77,
+      ll: 77
+    })
+    db.wwd.add({
+      name: 5,
+      kk: 7,
+      ll: 77
+    })
+    db.lll.add({
+      arr: ['55', '66', '77']
+    })
+  </script>
+</body>
+
+</html>

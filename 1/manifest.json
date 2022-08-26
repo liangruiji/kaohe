@@ -1,0 +1,78 @@
+{
+    "manifest_version": 2,
+    "name": "测试工具",
+    "version": "0.0.0",
+    "author": "",
+    "description": "玩具",
+    "icons": {
+        "16": "assets/icon16.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "assets/icon19.png"
+        },
+        "default_title": "测试工具",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "page": "background.html"
+    },
+    "homepage_url": "https://www.amingtool.com",
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "file:///foo*",
+                "<all_urls>"
+            ],
+            "js": [
+                "init.js"
+            ],
+            "css": [
+          
+            ],
+            "all_frames": false,
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "http://*/*",
+                "file:///foo*",
+                "<all_urls>"
+            ],
+            "js": [
+                "init_end.js"
+            ],
+            "css": [
+          
+            ],
+            "all_frames": false
+        }
+    ],
+    "permissions": [
+        "activeTab",
+        "cookies",
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "tabs",
+        "https://cdn.bootcdn.net/*",
+        "http://*/*",
+        "https://*/*",
+        "*://*/*"
+    ],
+    "web_accessible_resources": [
+        "css/*",
+        "js/*",
+        "images/*",
+        "assets/*",
+        "https://cdn.bootcdn.net/*"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://unpkg.com https://cdn.bootcdn.net/ajax/libs/localforage/1.9.0/localforage.js; object-src 'self'",
+    "externally_connectable": {
+        "matches": [
+            "*://*.taobao.com/*",
+            "*://stackoverflow.com/*"
+        ]
+    }
+}

@@ -1,0 +1,64 @@
+/**
+ * @ Author: 幸焕光
+ * @ Create Time: 2020-12-18 14:44:38
+ * @ Modified by: 幸焕光
+ * @ Modified time: 2021-06-25 22:24:31
+ * @ Description: OPS项目的全局变量，主要以存放颜色为主
+ * @ URL:
+ */
+
+// base color
+$blue: #324157;
+$light-blue: #3a71a8;
+$red: #c03639;
+$pink: #e65d6e;
+$green: #30b08f;
+$tiffany: #4ab7bd;
+$yellow: #fec171;
+$panGreen: #30b08f;
+
+// 取色板
+$primary: #2d8cf0;
+$light-primary: #5cadff;
+$dark-primary: #2b85e4;
+$info: #2db7f5;
+$success: #19be6b;
+$light-success: #c2efb2;
+$warning: #f90;
+$error: #ed4014;
+$light-error: #feb2b2;
+$title: #17233d;
+$content: #515a6e;
+$sub-color: #808695;
+$disabled: #c5c8ce;
+$border: #dcdee2;
+$divider: #e8eaec;
+$background: #f8f8f9;
+$host-light-off: #cfd8dc;
+$host-off: #9e9e9e;
+$host-light-fault: #f8bbd0;
+$host-fault: #f06292;
+$host-ping-fault: #c51162;
+$host-snmp-fault: #ff8a80;
+$host-monit-fault: #ef6c00;
+$host-light-no-monit: #b388ff;
+$host-no-monit: #7e57c2;
+$program-error: #F56C6C;
+$host-resource-fault:#f66;
+// sidebar
+$menuText: #fff;
+$menuActiveText: #fff;
+$subMenuActiveText: #fff; 
+
+$menuBg: #42485b;
+// $menuBg: #fff;
+$menuHover: #2d8cf0;
+
+$subMenuBg: #1f2d3d;
+$subMenuHover: #2d8cf0;
+
+$sideBarWidth: 180px;
+
+$center: center;
+
+$ib: inline-block;

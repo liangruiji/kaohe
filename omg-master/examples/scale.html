@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>omg.js | Scale</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #canvas {
+      margin: 0;
+    }
+
+    .text {
+      width: 500px;
+      height: 200px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      line-height: 200px;
+      text-align: center;
+      font-size: 20px;
+      color: #555;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+    <canvas id="canvas"></canvas>
+    <div class="text">
+      滚动鼠标滚轮来缩放绘图。
+    </div>
+</div>
+<script src="./omg.min.js"></script>
+<script>
+  var stage = omg({
+    element: document.getElementById('canvas'),
+    width: document.body.clientWidth,
+    height: document.body.clientHeight,
+    enableGlobalTranslate: true,
+    enableGlobalScale: true,
+    prepareImage: true
+  });
+
+  stage.init();
+
+  var rect1 = stage.graphs.rectangle({
+    x: 200,
+    y: 500,
+    width: 100,
+    height: 100,
+    zindex: 2,
+    rotate: 20, // not work when define radius
+    radius: {
+      tl: 6,
+      tr: 6,
+      bl: 6,
+      br: 6
+    },
+    color: '#ef8376'
+  }).on('mouseenter mousemove', function() {
+    stage.element.style.cursor = 'pointer';
+    rect1.color = '#000';
+    stage.redraw();
+  }).on('mouseleave', function() {
+    stage.element.style.cursor = 'default';
+    rect1.color = '#ef8376';
+    stage.redraw();
+  }).config({
+    drag: true,
+    fixed: true
+    // cliping: true
+  });
+
+  var arc = stage.graphs.arc({
+    x: 130,
+    y: 380,
+    radius: 100,
+    startAngle: -45,
+    endAngle: 45,
+    color: '#e1a376',
+    style: 'fill'
+  }).on('mouseenter', function(cur) {
+    cur.color = '#555';
+    stage.redraw();
+  }).on('mouseleave', function(cur) {
+    cur.color = '#e1a376';
+    stage.redraw();
+  }).config({
+    drag: true
+  });
+
+  var text = stage.graphs.text({
+    x: 300,
+    y: 40,
+    width: 140,
+    height: 26,
+    paddingTop: 6, //text padding top
+    paddingLeft: 6,
+    center: false,
+    background: {
+      img: './img/text_bg.png'
+    }, // optional
+    fontSize: 12,
+    text: 'Hello World',
+    color: '#fff'
+  }).on('mouseenter', function(cur) {
+    cur.backgroundColor = '#555';
+    stage.redraw();
+  }).on('mouseleave', function(cur) {
+    cur.backgroundColor = 'blue';
+    stage.redraw();
+  });
+
+  var image = stage.graphs.image({
+    x: 300,
+    y: 200,
+    width: 97,
+    height: 110,
+    sliceX: 5,
+    sliceY: 0,
+    sliceWidth: 97,
+    sliceHeight: 110,
+    src: './img/action.png'
+  }).config({
+    drag: true
+  });
+
+
+  var line = stage.graphs.line({
+    matrix: [
+      [10, 180], 
+      [40, 50], 
+      [80, 180], 
+      [90, 80],
+      [110, 100], 
+      [140, 50],
+      [260, 180]
+    ],
+    lineWidth: 3
+  }).on('mouseenter', function(cur) {
+    cur.color = '#000';
+    cur.lineWidth = 6;
+    stage.redraw();
+  }).on('mouseleave', function(cur) {
+    cur.color = '#555';
+    cur.lineWidth = 3;
+    stage.redraw();
+  }).config({
+    cliping: true
+  });
+
+  var polygon = stage.graphs.polygon({
+    matrix: [[310, 120], [360, 120], [348, 230], [250, 340], [146, 200]],
+    style: 'stroke',
+    lineWidth: 2
+  }).config({
+    zindex: 11,
+    cliping: true,
+    drag: true
+  }).on('mouseenter', function(cur) {
+    cur.color = '#000';
+    cur.lineWidth = 7;
+    stage.redraw();
+  }).on('mouseleave', function(cur) {
+    cur.color = '#555';
+    cur.lineWidth = 2;
+    stage.redraw();
+  });
+
+  stage.addChild([rect1, arc, text, image, line, polygon]);
+  stage.show();
+
+  line.animateTo({
+    boundingWidth: line.getBounding().w
+  }, {
+    duration: 1500,
+    easing: 'cubicInOut',
+    onFinish: function() {
+     polygon.cliping = false; 
+    }
+  });
+
+  polygon.animateTo({
+    boundingWidth: polygon.getBounding().w
+  }, {
+    duration: 1500,
+    easing: 'cubicInOut',
+    onFinish: function() {
+     polygon.cliping = false; 
+    }
+  });
+
+  // rect1.animateTo({
+  //   boundingWidth: rect1.getBounding().w
+  // }, {
+  //   duration: 1500,
+  //   easing: 'cubicInOut',
+  //   onFinish: function() {
+  //    polygon.cliping = false; 
+  //   }
+  // }); 
+
+</script>
+</body>
+</html>

@@ -128,6 +128,12 @@ git stash pop  把暂存的拉取下来
 
 
 
+合并错了分支
+
+git reset --hard HEAD~
+
+
+
 
 
 进不了测试服和线上，重连wifi，重连路由都没用，好像重启就可以
@@ -203,3 +209,6 @@ remote-cert-tls server
 
 ~~~
 
+命令行加host
+
+sudo bash -c 'echo "192.168.8.247 gl.ydt.com" >> /etc/hosts'

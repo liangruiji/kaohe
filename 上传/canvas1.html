@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <canvas id="drawing" width="600" height="400">A drawing of someing!</canvas>
+    <script type="text/javascript" src="draw.js"></script>
+    <script type="text/javascript">
+        var init = function(){
+            var data = [
+              { data: 20, color: "grey", label: "2017" },
+              { data: 20, color: "red", label: "2018" },
+              { data: 20, color: "orange", label: "2019" },
+              { data: 20, color: "black", label: "2010"}
+            ];
+            var options = {
+                title: {
+                    text: 'Production By Year',
+                    font: {
+                      size: 30
+                    }
+                },
+                tooltip: {
+                    template: 'Year: {{label}} Production: {{data}}',
+                    font: {
+                      family: "Arial",
+                      size: 3,
+                      weight: 'light'
+                    }
+                }
+            }
+            drawPie(data, document.getElementById("drawing"), options);
+        };
+
+        window.onload = function() {
+          init();
+        }
+
+    </script>
+</body>
+</html>

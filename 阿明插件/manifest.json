@@ -1,0 +1,123 @@
+{
+    "author": "阿明",
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ]
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "images/icon19.png"
+        },
+        "default_popup": "popup.html",
+        "default_title": "阿明工具"
+    },
+    "content_scripts": [
+        {
+            "all_frames": true,
+            "css": [
+                "css/layer.css"
+            ],
+            "js": [
+                "js/jquery.min.js",
+                "js/layer.js",
+                "js/init.js"
+            ],
+            "matches": [
+                "*://*.taobao.com/*",
+                "*://*.tmall.com/*",
+                "*://*.tmall.hk/*",
+                "*://*.1688.com/*",
+                "*://*.jiyoujia.com/*",
+                "*://*.alitrip.com/*",
+                "*://*.fliggy.com/*",
+                "*://*.fliggy.hk/*",
+                "*://*.95095.com/*",
+                "*://*.liangxinyao.com/*",
+                "*://*.aliexpress.com/*",
+                "*://*.alibaba.com/*",
+                "*://*.alimama.com/*",
+                "*://*.etao.com/*",
+                "*://*.jd.com/*",
+                "*://*.yhd.com/*",
+                "*://*.kaola.com/*",
+                "*://you.163.com/*",
+                "*://*.meituan.com/*",
+                "*://*.dianping.com/*",
+                "*://*.dangdang.com/*",
+                "*://*.vip.com/*",
+                "*://*.amazon.cn/*",
+                "*://*.amazon.com/*",
+                "*://*.suning.com/*",
+                "*://*.gome.com.cn/*",
+                "*://*.moonbasa.com/*",
+                "*://*.beibei.com/*",
+                "*://*.womai.com/*",
+                "*://*.douyin.com/*",
+                "*://*.kuaishou.com/*",
+                "*://*.pinduoduo.com/*",
+                "*://*.yangkeduo.com/*"
+            ]
+        }
+    ],
+    "description": "生意参谋指数转换，数据分析，数据导出；直通车数据优化；淘宝辅助；",
+    "homepage_url": "https://www.amingtool.com",
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh794YY6uSFVfLgm3hFgTDia9e5LZjN4TjLAWPyNfLUaQPVtJTS8WY0AH94nsxSUFcc8182s0zgxHR77Jzr/YRv8Sk7U+urmlzkzMDj4L9yx7bquCkliUZLo3sBf+pGL0F3R/OsunieH9moB5YV4PUQj56YrMGWVve8rsF+NrVztduOt8/3jPwXcHaUNb+1jNqZQQQvrK5nDnz3+loNQXmMWh0Fmr1ejtQeU0NCn5N5veLTKDDoBq5X+/lU6AvBLzbWmZhEAa1I3NBruySVCfhKak6GAq+jeXJQEuCVQTJlK7MYit95fAZCGs8JQKUyrRq4PNaduSMMRdA3FZ8XZciwIDAQAB",
+    "manifest_version": 2,
+    "name": "阿明工具",
+    "permissions": [
+        "activeTab",
+        "cookies",
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "*://*.amingtool.com/*",
+        "*://*.zhishuchacha.com/*",
+        "*://*.taobao.com/*",
+        "*://*.tmall.com/*",
+        "*://*.tmall.hk/*",
+        "*://*.1688.com/*",
+        "*://*.jiyoujia.com/*",
+        "*://*.alitrip.com/*",
+        "*://*.fliggy.com/*",
+        "*://*.fliggy.hk/*",
+        "*://*.95095.com/*",
+        "*://*.liangxinyao.com/*",
+        "*://*.aliexpress.com/*",
+        "*://*.alibaba.com/*",
+        "*://*.alimama.com/*",
+        "*://*.etao.com/*",
+        "*://*.jd.com/*",
+        "*://*.yhd.com/*",
+        "*://*.kaola.com/*",
+        "*://you.163.com/*",
+        "*://*.meituan.com/*",
+        "*://*.dianping.com/*",
+        "*://*.dangdang.com/*",
+        "*://*.vip.com/*",
+        "*://*.amazon.cn/*",
+        "*://*.amazon.com/*",
+        "*://*.suning.com/*",
+        "*://*.gome.com.cn/*",
+        "*://*.moonbasa.com/*",
+        "*://*.beibei.com/*",
+        "*://*.womai.com/*",
+        "*://*.douyin.com/*",
+        "*://*.kuaishou.com/*",
+        "*://*.pinduoduo.com/*",
+        "*://*.yangkeduo.com/*"
+    ],
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "version": "8.0.2",
+    "web_accessible_resources": [
+        "css/*",
+        "js/*",
+        "images/*",
+        "layui/*"
+    ]
+}

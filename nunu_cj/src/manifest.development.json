@@ -1,0 +1,115 @@
+{
+    "manifest_version": 2,
+    "name": "努努工具",
+    "version": "0.0.0",
+    "author": "",
+    "description": "玩具",
+    "icons": {
+        "16": "assets/images/icon16.png",
+        "48": "assets/images/icon48.png",
+        "128": "assets/images/icon128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "assets/images/icon19.png"
+        },
+        "default_title": "努努工具",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "page": "background.html"
+    },
+    "homepage_url": "https://www.amingtool.com",
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "file:///foo*",
+                "<all_urls>"
+            ],
+            "js": [
+                "assets/js/dexie.js",
+                "assets/js/codemirror.js",
+                "assets/js/javascript.js",
+                "assets/js/xml.js",
+                "assets/js/htmlmixed.js",
+                "assets/js/css.js",
+                "assets/js/fullscreen.js",
+                "assets/js/fold/foldcode.js",
+                "assets/js/fold/foldgutter.js",
+                "assets/js/fold/brace-fold.js",
+                "assets/js/fold/xml-fold.js",
+                "assets/js/fold/indent-fold.js",
+                "assets/js/fold/markdown-fold.js",
+                "assets/js/fold/comment-fold.js",
+                "assets/js/vue.js",
+                "assets/js/element-ui.min.2.15.1.js",
+                "js/init.js"
+            ],
+            "css": [
+                "assets/css/codemirror.css",
+                "assets/css/fullscreen.css",
+                "assets/js/fold/foldgutter.css",
+                "assets/css/nunu.css",
+                "assets/css/element.css"
+            ],
+            "all_frames": false
+        },
+        {
+            "matches": [
+                "http://*/*",
+                "file:///foo*",
+                "<all_urls>"
+            ],
+            "js": [
+                "assets/js/jquery.min.js",
+                "js/init_start.js"
+            ],
+            "css": [],
+            "all_frames": false,
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "http://*/*",
+                "file:///foo*",
+                "<all_urls>"
+            ],
+            "js": [
+                "js/init_end.js"
+            ],
+            "css": [],
+            "all_frames": false,
+            "run_at": "document_end"
+        }
+    ],
+    "chrome_url_overrides": {
+        "newtab": "myPage.html"
+    },
+    "permissions": [
+        "activeTab",
+        "cookies",
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "tabs",
+        "https://cdn.bootcdn.net/*",
+        "http://*/*",
+        "https://*/*",
+        "*://*/*"
+    ],
+    "web_accessible_resources": [
+        "css/*",
+        "js/*",
+        "images/*",
+        "assets/*",
+        "https://cdn.bootcdn.net/*"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://unpkg.com https://cdn.bootcdn.net/ajax/libs/localforage/1.9.0/localforage.js; object-src 'self'",
+    "externally_connectable": {
+        "matches": [
+            "*://*.taobao.com/*",
+            "*://stackoverflow.com/*"
+        ]
+    }
+}

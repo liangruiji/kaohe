@@ -1,0 +1,15 @@
+[ignore]
+.*/node_modules/.*
+.*/scripts/.*
+.*/examples/.*
+
+[include]
+
+[libs]
+flow
+
+[lints]
+
+[options]
+
+[strict]

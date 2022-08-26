@@ -1,0 +1,61 @@
+{
+  "name": "omg.js",
+  "version": "4.0.1",
+  "keywords": [
+    "canvas",
+    "event",
+    "drag",
+    "drop",
+    "draw"
+  ],
+  "description": "Oh my goodness! Awesome Canvas Render Library.",
+  "main": "dist/omg.js",
+  "scripts": {
+    "build": "rm -rf dist/ && node rollup.config.js --beauty && node rollup.config.js --minify && cp dist/omg.min.js examples/omg.min.js",
+    "dev": "rm -rf dist/ && node rollup.config.js --example",
+    "eslint": "eslint src --ext .js --cache",
+    "release": "relix",
+    "extra": "cp dist/omg.min.js examples/omg.min.js && git add .",
+    "flow": "flow"
+  },
+  "author": "PengJiyuan <pjy@isweety.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PengJiyuan/omg.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PengJiyuan/omg.js/issues"
+  },
+  "homepage": "https://github.com/PengJiyuan/omg.js#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "colors": "^1.1.2",
+    "eslint": "^4.8.0",
+    "eslint-plugin-flowtype": "^2.46.2",
+    "flow-bin": "^0.70.0",
+    "fs-extra": "^4.0.2",
+    "pre-commit": "^1.2.2",
+    "relix": "^1.0.0",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-uglify": "^2.0.1"
+  },
+  "pre-commit": [
+    "flow",
+    "eslint",
+    "build",
+    "extra"
+  ],
+  "files": [
+    "dist/*"
+  ]
+}

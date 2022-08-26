@@ -1,0 +1,75 @@
+body,html{
+    font-family: microsoft Yahei;
+
+}
+body{
+    background: #edf9ff;
+    padding: 0;
+    margin: 0;
+}
+h1{
+    font-weight: bold;
+    color: #0b75c8
+}
+#con{
+    width: 1024px;
+    margin: 0px auto;
+    background: #fff;
+    padding: 10px 20px;
+}
+.head{
+    border-bottom:5px solid #ddd;
+    margin-bottom: 20px;
+}
+.content textarea{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.content textarea,.content input{
+
+    font-size: 16px;
+    font-family: microsoft Yahei;
+
+}
+.clear{
+    clear: both;
+}
+.set {
+    float: left;
+    margin-right: 15px;
+}
+.set_list{
+    margin: 10px 0;
+}
+.set_list input{
+    padding: 8px 3px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+#snippet_result{
+    background:#282c34;
+    color: #61afef;
+}
+
+button{
+    padding: 8px 16px;
+    cursor: pointer;
+    background: #0b75c8;
+    color: #fff;
+    border: 1px solid #43a3ef;
+    border-radius: 5px;
+
+}
+button:hover{
+    background: #333;
+}
+.prefix label{
+    cursor: pointer;
+    display:none;
+}
+
+#dollar{
+    width:20px;
+    height:20px;
+}

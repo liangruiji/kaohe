@@ -1,4 +1,4 @@
-### sync 修饰符
+##### sync 修饰符
 
 作用：父子传参双向绑定数据的语法糖，
 
@@ -8,6 +8,7 @@ vue 提供 `update:my-prop_name` 的模式触发事件。
 //子组件
 close(){
     this.isShow = false
+		// 注意：不需要修改porp属性值，提交事件后，prop会自动修改
     this.$emit('update:visible', false)
 }
 
@@ -31,9 +32,9 @@ close(){
 
 vue 修饰符sync的功能是：当一个子组件改变了一个 prop 的值时，这个变化也会同步到父组件中所绑定。也可以props传初始值，然后事件监听
 
-#### 实现组件通信双向绑定的方法
+##### 实现组件通信双向绑定的方法
 
-三种
+###### 三种
 
 1.`update:my-prop_name` 的模式触发事件
 

@@ -1,0 +1,120 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-06 09:10:35
+ * @LastEditTime: 2021-09-06 21:20:36
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /kaohe/canvas/小球/1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let canvas = document.querySelector('#canvas')
+    let height = window.innerHeight
+    let width = window.innerWidth
+    canvas.height = height
+    canvas.width = width
+    let crt = canvas.getContext("2d")
+
+    function getRandomNum(a, b) {
+      return Math.floor(Math.random() * (b - a + 1) + a);
+    }
+
+    function ball(x, y, dx, dy, r) {
+      this.x = x
+      this.y = y
+      this.dx = dx
+      this.dy = dy
+      this.r = r
+    }
+
+    ball.prototype.draw = function () {
+
+      crt.beginPath();
+
+      crt.arc(this.x, this.y, this.r, 2 * Math.PI, false)
+      // crt.stroke()
+      crt.fillStyle = "red"
+      crt.fill()
+
+    }
+    ball.prototype.upData = function () {
+      if (this.x + this.r >= width || this.x - this.r <= 0) {
+        this.dx = -this.dx
+        // this.dx *= 0.9
+      }
+      this.x += this.dx
+      if (this.y + this.r >= height || this.y - this.r <= 0) {
+        this.dy = -this.dy
+        // this.dy *= 0.9
+      }
+      this.y += this.dy
+      this.draw()
+    }
+    // let ball1 = new ball(500, 500, 1, 1, 50)
+
+    let ballArr = []
+    for (let i = 1; i <= 100; i++) {
+      let r = getRandomNum(2, 10)
+      let x = getRandomNum(r, width - r)
+      let y = getRandomNum(r, height - r)
+      let dx = getRandomNum(-5, 5)
+      let dy = getRandomNum(-5, 5)
+      let item = new ball(x, y, dx, dy, r)
+      ballArr.push(item)
+    }
+
+
+
+    // let x = 500
+    // let y = 500
+    // let dx = 1
+    // let dy = 1
+    // let r = 50
+
+
+    function animation() {
+      requestAnimationFrame(animation)
+      // crt.clearRect(0, 0, width, height)
+
+      // if (x + r >= width || x - r <= 0) {
+      //   dx = -dx
+      // }
+      // x += 3 * dx
+      // if (y + r >= height || y - r <= 0) {
+      //   dy = -dy
+      // }
+      // y += 3 * dy
+      // crt.beginPath();
+      // crt.arc(x, y, r, 2 * Math.PI, false)
+      // // crt.stroke()
+      // crt.fill()
+      crt.clearRect(0, 0, width, height)
+      ballArr.map((item) => {
+        item.upData()
+
+      })
+      // ball1.upData()
+
+    }
+    animation()
+  </script>
+</body>
+
+</html>

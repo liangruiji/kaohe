@@ -1,0 +1,49 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-07-12 09:40:11
+ * @LastEditTime: 2021-07-12 10:48:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /kaohe/上传/页面生命周期.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // document.readyState
+  //  "complete"
+  // 10:25:35.323 document.visibilityState
+  //  "hidden"
+  // 当前状态
+  console.log(document.readyState);
+
+  // 状态改变时打印它
+  document.addEventListener('readystatechange', () => console.log(document.readyState));
+  document.addEventListener("DOMContentLoaded", () => {
+    alert("DOM ready!");
+  });
+
+  window.onload = function () { // 与此相同 window.addEventListener('load', (event) => {
+    alert('Page loaded');
+  };
+  window.addEventListener("unload", function () {
+    alert('Page unload');
+    // navigator.sendBeacon("/analytics", 'ddd');
+  });
+  window.onbeforeunload = function () {
+    alert('Page onbeforeunload');
+    return "There are unsaved changes. Leave now?";
+  };
+</script>
+
+</html>

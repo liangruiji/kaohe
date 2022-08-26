@@ -4,8 +4,6 @@ render(createElement,context){}
 
 第二个参数为context，组件没有this代替this的以访问数据
 
-
-
 ~~~js
 
 <script>

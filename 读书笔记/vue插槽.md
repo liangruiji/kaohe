@@ -14,7 +14,9 @@
 
 有默认内容的插槽
 
-带数据的插槽
+带数据的插槽：父组件上使用子组件，在插槽里，使用子组件的数据
+
+解构插槽 Prop
 
 有内容的插槽会被渲染
 
@@ -70,11 +72,12 @@ v-slot:插槽名字="自定义名 "
 **注意**：
 
 1. **`v-slot` 只能添加在 `<template>` 上** (只有[一种例外情况](https://cn.vuejs.org/v2/guide/components-slots.html#独占默认插槽的缩写语法))，和slot和slot-scope属性不同，他们可以加到普通元素中
-
 2. `<template>` 元素中的所有内容都将会被传入相应的具名插槽,
 3. 任何没有包裹在带有 `v-slot` 的 `<template>` 中的内容都会被视为默认插槽的内容。
 4. 带数据的匿名插槽使用    v-slot:default="自定义名字"  简写 v-slot="自定义名字"
 5. 使用解构赋值获得一部分数据dd和vv  v-slot:default="{dd,vv}" 
+6. 只能有一个匿名插槽
+7. 父组件插槽中能使用子组件的类名，也可以使用父组件里的类名，两者都有时，看选择器权重，权重相同时，父组件会覆盖子组件
 
 ~~~js
 <father>
@@ -128,5 +131,14 @@ v-slot:插槽名字="自定义名 "
   </child>
 
 </father>
+~~~
+
+~~~
+//sycm.taobao.com/ipoll/live/rank/getCompetitorHotOfferRank.json?competitorUserId=1758914218&device=0&index=gmv&limit=15&page=1
+//sycm.taobao.com/ipoll/live/rank/getCompetitorHotOfferRank.json?competitorUserId=1758914218&device=0&index=uv&limit=15&page=1
+
+
+//sycm.taobao.com/ipoll/datawar/getUvRank.json?device=1&limit=30&page=1
+//sycm.taobao.com/ipoll/datawar/getPayamtRank.json?device=0&limit=30&page=1
 ~~~
 

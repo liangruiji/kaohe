@@ -132,3 +132,4 @@ async 和awiat 搭配使用 让方法 同步执行 方法就是按照程序的�
 
 所以 如果你关心 函数的执行顺序的话 最好使用 async和await  但是这样的话 执行时间好像就有点长了 看实际需求吧
 
+https://blog.csdn.net/qq_42345906/article/details/108079942

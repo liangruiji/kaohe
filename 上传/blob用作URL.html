@@ -1,0 +1,73 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-07-10 11:37:47
+ * @LastEditTime: 2021-07-10 16:41:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /kaohe/上传/blob用作URL.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- download 特性（attribute）强制浏览器下载而不是导航 -->
+  <a download="hello.txt" href='#' id="link">blob链接下载自己做的txt文件</a>
+  <a href='#' id="link1">blob链接跳转</a>
+  <a download="hello.txt" href='#' id="link2">data-url链接下载自己做的txt文件</a>
+  <a download="example.png" href='#' id="link3">下载已有的图片</a>
+  <img
+    src="data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7">
+
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+<script>
+  let blob = new Blob(["Hello, world!"], {
+    type: 'text/plain'
+  });
+  console.log(blob);
+  // 1.URL.createObjectURL(blob)
+  $('#link').attr('href', URL.createObjectURL(blob))
+  $('#link1').attr('href', URL.createObjectURL(blob))
+
+  // 2.Blob 转换为 data url
+  let reader = new FileReader();
+  reader.readAsDataURL(blob); // 将 Blob 转换为 base64 并调用 onload
+  reader.onload = function () {
+    // reader.result; 是 data url
+    $('#link2').attr('href', reader.result)
+  };
+
+  // 生成同尺寸的 <canvas>
+  let img = $('img')[0]
+  let canvas = document.createElement('canvas');
+  canvas.width = img.clientWidth;
+  canvas.height = img.clientHeight;
+  let context = canvas.getContext('2d');
+  // 向其中复制图像（此方法允许剪裁图像）
+  context.drawImage(img, 0, 0);
+  // 我们 context.rotate()，并在 canvas 上做很多其他事情
+  console.log(canvas);
+  // toBlob 是异步操作，结束后会调用 callback
+  canvas.toBlob(function (blob) {
+    // blob 创建完成，下载它
+    console.log(blob);
+    let down = $('#link3');
+
+    link = URL.createObjectURL(blob);
+    down.attr('href', link)
+
+    // 删除内部 blob 引用，这样浏览器可以从内存中将其清除
+    // URL.revokeObjectURL(link.href);
+  }, 'image/png');
+
+  // let blob = await new Promise(resolve => canvasElem.toBlob(resolve, 'image/png')); 同步
+</script>
+
+</html>

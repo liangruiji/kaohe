@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>omg.js | Multi_instance</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		#canvas {
+			margin: 0;
+			background-color: #ccc;
+		}
+
+		#canvas2 {
+			position: absolute;
+			top: 0;
+			left: 550px;
+		}
+	</style>
+</head>
+<body>
+<div id="fps"></div>
+<div class="container">
+		<canvas id="canvas"></canvas>
+		<canvas id="canvas2"></canvas>
+</div>
+<script src="./omg.min.js"></script>
+<script>
+
+	var stage = omg({
+		element: document.getElementById('canvas'),
+		width: 500,
+		height: 500,
+		enableGlobalTranslate: true
+	});
+
+	stage.init();
+
+	function createRect() {
+		stage.addChild(
+			stage.graphs.arc({
+				x: Math.random()*400,
+				y: Math.random()*400,
+				radius: Math.random()*20,
+				color: '#'+(~~(Math.random()*(1<<24))).toString(16),
+				style: 'fill'
+			}).config({
+				drag: true,
+				changeIndex: true
+			})
+		);
+	}	
+
+	for(var i = 0;i < 200; i++) {createRect();}
+	stage.show();
+
+	var stage2 = omg({
+		element: document.getElementById('canvas2'),
+		width: 500,
+		height: 500,
+		enableGlobalTranslate: true 
+	});
+
+	stage2.init();
+
+	function createRect2() {
+		stage2.addChild(
+			stage2.graphs.arc({
+				x: Math.random()*500,
+				y: Math.random()*500,
+				radius: Math.random()*20,
+				color: '#'+(~~(Math.random()*(1<<24))).toString(16),
+				style: 'fill'
+			}).config({
+				drag: true,
+				changeIndex: true
+			})
+		);
+	}	
+
+	for(var i = 0;i < 200; i++) {createRect2();}
+	stage2.show();
+
+
+
+</script>
+</body>
+</html>

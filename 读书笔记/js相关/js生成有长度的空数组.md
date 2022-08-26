@@ -1,6 +1,10 @@
-# Array.apply生成数组小结
+[TOC]
 
-### 总结:
+
+
+##### Array.apply生成数组小结
+
+###### 总结:
 
 1. map,forEach, reduce方法并**不会遍历数组中没有初始化**或者被delete的元素
 2. Array(10)和new Array(10)的返回值是一个有length属性的**空数组**，其中的每个元素还没有被赋值(初始化)，map,forEach, reduce方法会跳过这些元素
@@ -8,7 +12,7 @@
 
 
 
-## 发现问题
+###### 发现问题
 
 今天在学习vue时，在文档的一个例子中发现一个代码片段
 
@@ -43,7 +47,7 @@
 复制代码
 ```
 
-## 解决问题
+###### 解决问题
 
 但是通过今天看到的这个方法就可以创建一个可以被forEach等方法遍历的数组，这是为什么呢？
 
@@ -128,17 +132,17 @@ es6的另一种写法
   // [undefined, undefined, undefined, undefined, undefined]
 ```
 
-https://juejin.cn/post/6844903818056957960
+###### https://juejin.cn/post/6844903818056957960
 
-# [分析Array.apply(null, { length: 20 })](https://segmentfault.com/a/1190000011435501)
+###### [分析Array.apply(null, { length: 20 })](https://segmentfault.com/a/1190000011435501)
 
-[apply方法](https://segmentfault.com/t/apply方法)[数组](https://segmentfault.com/t/数组)[javascript](https://segmentfault.com/t/javascript)
+###### [apply方法](https://segmentfault.com/t/apply方法)[数组](https://segmentfault.com/t/数组)[javascript](https://segmentfault.com/t/javascript)
 
 发布于 2017-10-01
 
 ![img](https://sponsor.segmentfault.com/lg.php?bannerid=0&campaignid=0&zoneid=25&loc=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000011435501&referer=https%3A%2F%2Fwww.google.com%2F&cb=84a91c475b)
 
-## 背景
+##### 背景
 
 在阅读VueJS教程时有这么段[demo code](https://cn.vuejs.org/v2/guide/render-function.html#约束)：
 
@@ -154,11 +158,11 @@ render: function (createElement) {
 
 其中这个表达式`Array.apply(null, { length: 20 })`有点让人费解。第一感觉这个表达式就是为了创建一个长度为20的数组，但表达式`Array(20)`也可以实现这个功能啊，为啥非要写那么复杂呢？看来情况没那么简单。。。
 
-## 表达式Array.apply(null, { length: 2 })的值
+###### 表达式Array.apply(null, { length: 2 })的值
 
 先温故下基础(**为了方便验证将表达式改成Array.apply(null, { length: 2 })，即length的值改成2**):
 
-### 基础1: Array构造函数
+###### 基础1: Array构造函数
 
 直接调用Array函数跟new方式调用是等价的，即:
 
@@ -174,7 +178,7 @@ console.log(1 in a); // false, 因为数组下标0，1还未初始化
 console.log(a[0]); // undefined, 因为数组下标0还未初始化,访问不存在的属性返回undefined
 ```
 
-### 基础2: apply函数
+###### 基础2: apply函数
 
 ES5开始`apply`函数的第二个参数除了可以是数组外，还可以是类数组对象（即包含length属性，且length属性值是个数字的对象）。对象`{length: 2}`就是一个类数组对象，因为没有初始化下标0，1的值，所以获取0，1下标的值得到的都是undefined。
 
@@ -186,7 +190,7 @@ var a = Array.prototype.slice.call({length: 2});
 console.log(Array.isArray(a)) // true
 ```
 
-### 再看表达式Array.apply(null, { length: 2})的值
+###### 再看表达式Array.apply(null, { length: 2})的值
 
 温故了基础后再看表达式`Array.apply(null, { length: 2 })`他就等价于：
 
@@ -201,7 +205,7 @@ new Array(undefined, undefined);
 
 这样就很容易知道该表达式的值是**一个长度为2，且每个元素值都被初赋值为undefined的数组（\*注意此时不是数组元素没有初始化，而是初始化成undefined，这就是跟Array(2)的区别\*）**。
 
-## 为啥非要写那么复杂呢？
+###### 为啥非要写那么复杂呢？
 
 回到最初的问题：为啥非要写那么复杂呢？回答这个问题前还得温故下map方法（[来自MDN描述](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)）:
 
@@ -238,6 +242,6 @@ Array(20).map(function(val, index){
    Array(20).fill(null)
    ```
 
-## 其他
+###### 其他
 
 Array(2) 等价于[,,]，不等价于[undefined, undefined]

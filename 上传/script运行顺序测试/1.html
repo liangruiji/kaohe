@@ -1,0 +1,47 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-29 14:17:37
+ * @LastEditTime: 2021-10-29 14:32:17
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /kaohe/上传/script运行顺序测试/1.html
+-->
+<!-- 注入的脚本，带src属性在 Chrome 中异步执行。
+考虑这个 HTML 文件：
+ -->
+<html>
+
+<head>
+  <title>Chrome early script inject, Test Page</title>
+  <script>
+    var d = document.createElement("script");
+    d.async = false
+    d.src = "localInject1.js";
+    document.documentElement.append(d);
+
+    (document.head || document.documentElement).appendChild(d)
+  </script>
+  <script>
+    var s = document.createElement('script');
+    s.textContent = 'console.log ("Text runs correctly!", new Date().getTime() );';
+    // s.textContent =
+    //   "with(document)with(body)with(insertBefore(createElement('script'),firstChild))setAttribute('src','localInject1.js')"
+    var ss = document.currentScript
+    document.documentElement.append(s);
+  </script>
+</head>
+
+<body>
+  <p>See the console.</p>
+  <script>
+    with(document) with(body) with(insertBefore(createElement('script'), firstChild)) setAttribute('src',
+      'localInject1.js')
+  </script>
+  <div></div>
+  <script src="localInject2.js"></script>
+  <script>
+    console.log("In page: ", new Date().getTime());
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2,
+    "name": "努努工具",
+    "version": "0.0.0",
+    "author" :"",
+    "description": "玩具",
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "images/icon19.png"
+        },
+        "default_title": "努努工具",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["js/background.js"]
+    },
+    "homepage_url": "https://www.amingtool.com",
+	"content_scripts": [
+        {
+            "matches": [
+              "http://*/*",
+              "file:///foo*",
+                "<all_urls>"
+              ],
+            "js": ["js/jquery.min.js" ,"js/vue.js","js/init.js"],
+            "css": ["css/nunu.css"],
+            "all_frames": true
+        }
+    ],
+	"permissions": [
+        "activeTab", "cookies", "webRequest", "webRequestBlocking", "storage" 
+    ],
+    "web_accessible_resources": [ "css/*", "js/*", "images/*","vue/*"]
+}

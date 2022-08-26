@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>omg.js</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(to bottom, #243949 0%, #517fa4 100%);
+			overflow: hidden;
+		}
+		#canvas {
+			margin: 0;
+			background-color: #fff;
+			z-index: 1;
+		}
+		.holder {
+			position: absolute;
+			width: 500px;
+			height: 100%;
+			left: 50%;
+			margin-left: -250px;
+			background-color: rgba(152, 142, 170, 0.9);
+			-webkit-transform: skew(-30deg, 0deg);
+			-moz-transform: skew(-30deg, 0deg);
+			-ms-transform: skew(-30deg, 0deg);
+			transform: skew(-30deg, 0deg);
+			z-index: 2;
+		}
+		.logo {
+			margin: 0 0 0 10px;
+			position: absolute;
+			z-index: 2;
+			display: block;
+			width: 100px;
+			height: 50px;
+			font-size: 40px;
+			line-height: 40px;
+			color: #000;
+			text-decoration: none;
+			font-weight: 100;
+		}
+		.wrapper {
+			opacity: 0.65;
+			border-radius: 8px;
+			z-index: 3;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -218px;
+			margin-left: -130px;
+			width: 260px;
+			height: 386px;
+			background-color: #000;
+		}
+		.wrapper > .title {
+			width: 100%;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			font-size: 30px;
+			color: #fff;
+			font-weight: 100;
+		}
+		.wrapper > .examples {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 288px;
+			background: #fff;
+			overflow: hidden;
+			box-shadow: #bbbbbb 0 0 10px;
+		}
+		.wrapper > .examples > a {
+			text-decoration: none;
+			color: #000;
+			display: block;
+			width: 270px;
+			height: 36px;
+			line-height: 36px;
+			padding-left: 20px;
+			box-sizing: border-box;
+			transition: all 0.3s;
+			cursor: pointer;
+		}
+		.wrapper > .examples > a:hover {
+			-webkit-transform: rotateY(-20deg);
+			-moz-transform: rotateY(-20deg);
+			-ms-transform: rotateY(-20deg);
+			transform: rotateY(-20deg);
+			box-shadow: #888888 -4px 0 6px;
+		}
+		#fps {
+			z-index: 100;
+			position: absolute;
+			width: 80px;
+			height: 30px;
+			right: 0;
+			top: 0;
+			line-height: 30px;
+			text-align: center;
+			font-size: 16px;
+			color: black;
+			font-weight: 300;
+		}
+	</style>
+</head>
+<body>
+<div id="fps"></div>
+<div class="container">
+	<a href="https://github.com/PengJiyuan/omg.js" class="logo">omg.js</a>
+	<div class="wrapper">
+		<div class="title">EXAMPLES</div>
+		<ul class="examples">
+			<a href="./animation.html">Animation</a>
+			<a href="./shapes.html">Shapes</a>
+			<a href="./big_data.html">Big Data</a>
+			<a href="./drag_drop.html">Drag Drop</a>
+			<a href="./multi_canvas.html">Multi-instance</a>
+			<a href="./walk_control.html">Walk control</a>
+			<a href="./scale.html">Scale</a>
+			<a href="./group.html">Group</a>
+		</ul>
+	</div>
+	<!-- <div id="fps"></div> -->
+	<!-- <div id="holder" class="holder"></div> -->
+	<!-- <canvas id="canvas"></canvas> -->
+</div>
+<!-- <script src="./omg.min.js"></script> -->
+<script src="https://unpkg.com/particle-bg/lib/particle-bg.umd.min.js"></script>
+<script>
+	particleBg('body', {
+		color: 'rgba(255, 255, 255, 0.5)',
+		radius: 3
+	});
+	// var width = document.body.clientWidth;
+	// var height = document.body.clientHeight;
+	// var stage = omg({
+	// 	element: document.getElementById('canvas'),
+	// 	width: width,
+	// 	height: height,
+	// 	enableGlobalTranslate: false
+	// });
+
+	// stage.init();
+
+	// var eleFps = document.getElementById('fps');
+
+	// stage.fpsOn(function(fps) {
+	// 	eleFps.innerHTML = 'FPS: ' + fps;
+	// });
+
+	// // document.getElementById('holder').style.backgroundColor = 'rgba('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', 0.9)';
+	// // console.log(document.getElementById('holder').style.backgroundColor)
+
+	// var rr = [10, 50];
+	// var rectList = [];
+	// var createRect = function() {
+	// 	var w = Math.random() * (rr[1] - rr[0]) + rr[0];
+	// 	var color = 'rgba('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', 0.5)';
+	// 	var rect = stage.graphs.rectangle({
+	// 		x: Math.random() * width,
+	// 		y: Math.random() * height,
+	// 		rotate: Math.ceil(Math.random() * 90),
+	// 		width: w,
+	// 		height: w,
+	// 		color: color
+	// 	});
+
+	// 	rectList.push(rect);
+	// };
+
+	// for(var i = 0; i < 80; i++) {
+	// 	createRect();
+	// }
+
+	// stage.addChild(rectList);
+
+	// var arcList = [];
+	// var createArc = function() {
+	// 	var r = Math.random() * (rr[1] - rr[0]) + rr[0];
+	// 	var color = 'rgba('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', 0.3)';
+	// 	var arc = stage.graphs.arc({
+	// 		x: Math.random() * width - 80,
+	// 		y: Math.random() * height - 80,
+	// 		radius: r,
+	// 		color: color,
+	// 		style: 'fill'
+	// 	});
+	// 	arcList.push(arc);
+	// };
+
+	// for(var i = 0; i < 60; i++) {
+	// 	createArc();
+	// }
+
+	// stage.addChild(arcList);
+
+	// function bounce(shape, r) {
+	// 	shape.animateTo({
+	// 		radius: shape.radius + r
+	// 	}, {
+	// 		easing: 'quadOut',
+	// 		duration: 2000,
+	// 		onFinish: function(keys) {
+	// 			bounce(shape, -r);
+	// 		}
+	// 	});
+	// }
+
+	// arcList.forEach(function(a) {
+	// 	var random = Math.random();
+	// 	var flag = random < 0.5 ? true: false;
+	// 	var plus = random * 20 + 10;
+	// 	var minus = a.radius - random * 20 - 10 >= 0 ? - random * 20 - 10 : 0;
+	// 	bounce(a, flag ? plus : minus);
+	// });
+
+	// function rotateRect() {
+	// 	rectList.forEach(function(r) {
+	// 		r.rotate++;
+	// 	});
+	// }
+
+	// stage.animate(rotateRect);
+
+</script>
+</body>
+</html>

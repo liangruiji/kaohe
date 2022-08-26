@@ -10,7 +10,7 @@ runtime.sendMessage(extensionId?: string, message: any, options: object, respons
 
 chrome.runtime.getManifest()
 
-chrome.runtime.getURL
+chrome.runtime.getURL() 将插件安装目录中的相对路径转换为标准URL。
 
 chrome.runtime.reload()
 

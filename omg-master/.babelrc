@@ -1,0 +1,6 @@
+{
+  "presets": [
+    "flow", ["env", {"modules": false}]
+  ],
+  "plugins": ["external-helpers", "transform-class-properties"]
+}

@@ -1,4 +1,4 @@
-![image-20210415152354819](/Users/telking/Library/Application Support/typora-user-images/image-20210415152354819.png)
+
 
 popup页面的css文件是在哪里的
 
@@ -122,134 +122,9 @@ window.postmessage 用法
 
 内容页面设置的localStorage会在加载内容页面的网页中
 
-~~~
-/flow/v5/shop/source/tree.json?belong=all&dateRange=2021-03-23|2021-04-21&dateType=recent30&device=2&indexCode=uv,crtByrCnt,crtRate,guideToShortVideoUv,crtVldAmt&order=desc&orderBy=uv&page=1&pageSize=10
-~~~
-
-~~~
-/flow/v5/live/shop/source/tree.json?belong=all&dateRange=2021-04-22|2021-04-22&dateType=today&device=2&indexCode=uv&order=desc&orderBy=uv&page=1&pageSize=10
-实时
-
-~~~
-
-~~~
-/flow/v5/shop/source/tree.json?belong=all&dateRange=2021-04-21|2021-04-21&dateType=recent1&device=2&indexCode=uv,crtByrCnt,crtRate&order=desc&orderBy=uv&page=1&pageSize=10
-~~~
-
-~~~
-/flow/v5/shop/source/tree.json?belong=all&dateRange=2021-04-15|2021-04-21&dateType=recent7&device=2&indexCode=uv,crtByrCnt,crtRate&order=desc&orderBy=uv&page=1&pageSize=10
-~~~
-
-~~~
-/flow/v5/shop/source/tree.json?belong=all&dateRange=2021-03-23|2021-04-21&dateType=recent30&device=2&indexCode=uv,crtByrCnt,crtRate&order=desc&orderBy=uv&page=1&pageSize=10
-
-https://sycm.taobao.com/flow/v5/shop/source/tree.json?dateRange=2021-03-24%7C2021-04-22&dateType=recent30&pageSize=10&page=1&order=desc&orderBy=uv&device=2&belong=all&indexCode=uv%2CcrtByrCnt%2CcrtRate&_=1619169034673&token=c61222158
-~~~
-
-~~~
-/flow/v5/shop/source/tree.json?belong=all&dateRange=2021-04-21|2021-04-21&dateType=day&device=2&indexCode=uv,crtByrCnt,crtRate&order=desc&orderBy=uv&page=1&pageSize=10
-~~~
-
-~~~
-/flow/v5/shop/source/tree.json?belong=all&dateRange=2021-04-12|2021-04-18&dateType=week&device=2&indexCode=uv,crtByrCnt,crtRate&order=desc&orderBy=uv&page=1&pageSize=10
-~~~
-
-~~~
-/flow/v6/shop/source/crowdtype/tree.json?belong=all&crowdType=new&dateRange=2021-04-21|2021-04-21&dateType=recent1&device=2&indexCode=uv,payByrCnt,payRate&order=desc&orderBy=uv&page=1&pageSize=10
-新客
-/flow/v6/shop/source/crowdtype/tree.json?belong=all&crowdType=old&dateRange=2021-04-21|2021-04-21&dateType=recent1&device=2&indexCode=uv,payByrCnt,payRate&order=desc&orderBy=uv&page=1&pageSize=10
-老客
-/flow/v6/shop/source/crowdtype/tree.json?belong=all&crowdType=mbr&dateRange=2021-04-21|2021-04-21&dateType=recent1&device=2&indexCode=uv,payByrCnt,payRate&order=desc&orderBy=uv&page=1&pageSize=10
-会员
-/flow/v5/shop/source/tree.json?belong=all&dateRange=2021-04-21|2021-04-21&dateType=recent1&device=2&indexCode=uv,crtByrCnt,crtRate&order=desc&orderBy=uv&page=1&pageSize=10
-整体
-~~~
-
-~~~
-uv 访客数
-crtByrCnt 下单买家数
-crtRate 下单转化率
-guideToShortVideoUv 引导短视频访客数
-ipvUvRelate 引导商品访问数
-newUv 新访客数
-shopCltByrCnt 关注店铺数
-cltItmCnt 商品收藏人数
-cartByrCnt 加购人数
-crtVldAmt 下单金额
-payAmt 支付金额
-payByrCnt 支付买家数
-payRate 支付转化率
-payPct 客单价
-uvValue UV价值
-
-expUv
-directPayByrCnt 直接支付买家数
-cltItmPayByrCnt 收藏商品支付买家数
-fansPayByrCnt 粉丝支付买家数
-ordItmPayByrCnt 加购商品-支付买家数
 
 
-192 20.33
-~~~
 
-![image-20210422172341957](/Users/telking/Library/Application Support/typora-user-images/image-20210422172341957.png)
-
-![image-20210423104239311](/Users/telking/Library/Application Support/typora-user-images/image-20210423104239311.png)
-
-![image-20210423104331934](/Users/telking/Library/Application Support/typora-user-images/image-20210423104331934.png)
-
-~~~
-/flow/v5/shop/source/tree.json?belong=all&dateRange=2021-04-24|2021-04-24&dateType=recent1&device=2&indexCode=uv,crtByrCnt,crtRate&order=desc&orderBy=uv&page=1&pageSize=10
-flow/v5/shop/source/tree.json?belong=all&dateRange=2021-04-16|2021-04-22&dateType=recent7&device=2&indexCode=uv,crtByrCnt,crtRate&order=desc&orderBy=uv&page=1&pageSize=10
-~~~
-
-~~~
-
-~~~
-
-~~~
-/flow/v6/live/item/source.json?dateRange=2021-04-27|2021-04-27&dateType=today&device=2&indexCode=uv&itemId=3399586689&order=desc&orderBy=uv
-实时
-~~~
-
-![image-20210427111951603](/Users/telking/Library/Application Support/typora-user-images/image-20210427111951603.png)
-
-~~~
-访客数
-访客数占比
-下单转化率
-下单买家数
-下单金额
-支付转化率
-支付买家数
-支付金额
-客单价
-uv价值
-~~~
-
-~~~
-访客数  uv
-下单买家数 crtByrCnt
-下单转化率 crtRate
-浏览量 pv
-浏览量占比 pv
-店内跳转人数 jpSelfUv
-跳出本店人数 jpUv
-收藏人数 cltCnt
-收藏率 cltCnt/uv
-加购人数 cartByrCnt
-加购率 cartByrCnt/uv
-支付金额 payAmt
-支付件数 payItmCnt
-支付买家数 payByrCnt
-支付转化率 payRate
-客单价 payAmt/payByrCnt
-uv价值 payAmt/uv
-直接支付买家数
-收藏支付买家数
-粉丝支付买家数
-加购商品买家数
-~~~
 
 
 
@@ -261,7 +136,7 @@ https://segmentfault.com/a/1190000020061167监听local变化
 
 而解密思路则是放过来：`16进制密文--> 16进制编码-->base64编码-->AES加密-->明文`
 
-![image-20210428120108744](/Users/telking/Library/Application Support/typora-user-images/image-20210428120108744.png)
+
 
 Tracker
 
@@ -289,95 +164,11 @@ Location replace() 方法
 
 
 
-~~~
-商品名称及url
-品牌名称
-日期
-总交易金额
-促销价
-交易金额
-
-商品名称
-类目名
-日期
-总交易金额
-促销价
-交易金额
-~~~
-
-xws/session/mc/mq/industryCustomer/customerTrend.json?cateId=50021948&dateRange=2021-04-28|2021-04-28&dateType=day&device=0&indexCode=&sellerType=-1
-
-https://sycm.taobao.com/mc/buyerPortrait/listItemsByBrand.json?dateType=day&dateRange=2021-04-28%7C2021-04-28&cateId=50021948&seller=-1&brandId=22308972&_=1619680099614&token=c61222158
-
-5000 2187
-
-10000 7100
-
-20000 23443
-
-100000 396084
-
- 客群指数  paymentPeriodPreference
-
-搜索词偏好 searchWord_preference
-
-属性偏好  property_preference
-
-客群趋势 customerTrend
-
-品牌偏好-交易商品榜	listItemsByBrand
-
-类目偏好-交易商品榜 listItemsByCate
-
-![image-20210430162012072](/Users/telking/Library/Application Support/typora-user-images/image-20210430162012072.png)
-
-职业分析  
-
-~~~
-mc/mq/industryCustomer/getIndexValue.json?attrType=career&cateId=50021948&dateRange=2021-04-29|2021-04-29&dateType=day&device=0&indexCode=payByrCntRate&sellerType=-1
-~~~
 
 
 
-top省份 
 
-~~~
-mc/mq/industryCustomer/getIndexValue.json?attrType=prov&cateId=50021948&dateRange=2021-04-29|2021-04-29&dateType=day&device=0&indexCode=payByrCntRate&sellerType=-1
-~~~
 
-top城市
 
-~~~
-mc/mq/industryCustomer/getIndexValue.json?attrType=city&cateId=50021948&dateRange=2021-04-29|2021-04-29&dateType=day&device=0&indexCode=payByrCntRate&sellerType=-1
-~~~
 
-支付金额分布
-
-~~~
-"mc/mq/industryCustomer/payFondness.json?attrType=price_prefer&cateId=50021948&dateRange=2021-04-29|2021-04-29&dateType=day&device=0&indexCode=payByrCntRate&sellerType=-1"
-~~~
-
-品牌偏好排名
-
-~~~
-mc/buyerPortrait/listFondnessBrands.json?cateId=50021948&dateRange=2021-04-29|2021-04-29&dateType=day&device=0&page=1&pageSize=10&sellerType=-1
-~~~
-
-类目偏好排名
-
-~~~
-mc/buyerPortrait/listFondnessCates.json?cateId=50021948&dateRange=2021-04-29|2021-04-29&dateType=day&device=0&page=1&pageSize=10&sellerType=-1
-~~~
-
-年龄分析
-
-~~~
-"mc/mq/industryCustomer/getIndexValue.json?attrType=age&cateId=50021948&dateRange=2021-04-29|2021-04-29&dateType=day&device=0&indexCode=payByrCntRate&sellerType=-1"
-~~~
-
-性别分析
-
-~~~
-"mc/mq/industryCustomer/getIndexValue.json?attrType=gender&cateId=50021948&dateRange=2021-04-29|2021-04-29&dateType=day&device=0&indexCode=payByrCntRate&sellerType=-1"
-~~~
 

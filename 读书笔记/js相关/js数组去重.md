@@ -4,11 +4,9 @@
 
 **511**
 
-# [JavaScript数组去重（12种方法，史上最全）](https://segmentfault.com/a/1190000016418021)
+##### [JavaScript数组去重（12种方法，史上最全）](https://segmentfault.com/a/1190000016418021)
 
 [javascript](https://segmentfault.com/t/javascript)
-
-发布于 2018-09-16
 
 ![img](https://sponsor.segmentfault.com/lg.php?bannerid=0&campaignid=0&zoneid=25&loc=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000016418021&cb=8b47e0f425)
 
@@ -17,9 +15,9 @@
 
 注：写的匆忙，加上这几天有点忙，还没有非常认真核对过，不过思路是没有问题，可能一些小细节出错而已。
 
-## 数组去重的方法
+##### 数组去重的方法
 
-## 一、利用ES6 Set去重（ES6中最常用）
+##### 一、利用ES6 Set去重（ES6中最常用）
 
 ```
 function unique (arr) {
@@ -32,7 +30,7 @@ console.log(unique(arr))
 
 不考虑兼容性，这种去重的方法代码最少。这种方法还无法去掉“{}”空对象，后面的高阶方法会添加去掉重复“{}”的方法。
 
-## 二、利用for嵌套for，然后splice去重（ES5中最常用）
+##### 二、利用for嵌套for，然后splice去重（ES5中最常用）
 
 ```
 function unique(arr){            
@@ -54,7 +52,7 @@ var arr = [1,1,'true','true',true,true,15,15,false,false, undefined,undefined, n
 双层循环，外层循环元素，内层循环时比较值。值相同时，则删去这个值。
 想快速学习更多常用的ES6语法，可以看我之前的文章[《学习ES6笔记──工作中常用到的ES6语法》](https://segmentfault.com/a/1190000016068235)。
 
-## 三、利用indexOf去重
+##### 三、利用indexOf去重
 
 ```
 function unique(arr) {
@@ -77,7 +75,7 @@ console.log(unique(arr))
 
 新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。
 
-## 四、利用sort()
+##### 四、利用sort()
 
 ```
 function unique(arr) {
@@ -101,7 +99,7 @@ function unique(arr) {
 
 利用sort()排序方法，然后根据排序后的结果进行遍历及相邻元素比对。
 
-## 五、利用对象的属性不能相同的特点进行去重（这种数组去重的方法有问题，不建议用，有待改进）
+##### 五、利用对象的属性不能相同的特点进行去重（这种数组去重的方法有问题，不建议用，有待改进）
 
 ```
 function unique(arr) {
@@ -126,7 +124,7 @@ function unique(arr) {
 //[1, "true", 15, false, undefined, null, NaN, 0, "a", {…}]    //两个true直接去掉了，NaN和{}去重
 ```
 
-## 六、利用includes
+##### 六、利用includes
 
 ```
 function unique(arr) {
@@ -147,7 +145,7 @@ var arr = [1,1,'true','true',true,true,15,15,false,false, undefined,undefined, n
     //[1, "true", true, 15, false, undefined, null, NaN, "NaN", 0, "a", {…}, {…}]     //{}没有去重
 ```
 
-## 七、利用hasOwnProperty
+##### 七、利用hasOwnProperty
 
 ```
 function unique(arr) {
@@ -163,7 +161,7 @@ function unique(arr) {
 
 利用hasOwnProperty 判断是否存在对象属性
 
-## 八、利用filter
+##### 八、利用filter
 
 ```
 function unique(arr) {
@@ -177,7 +175,7 @@ function unique(arr) {
 //[1, "true", true, 15, false, undefined, null, "NaN", 0, "a", {…}, {…}]
 ```
 
-## 九、利用递归去重
+##### 九、利用递归去重
 
 ```
 function unique(arr) {
@@ -204,7 +202,7 @@ console.log(unique(arr))
 //[1, "a", "true", true, 15, false, 1, {…}, null, NaN, NaN, "NaN", 0, "a", {…}, undefined]
 ```
 
-## 十、利用Map数据结构去重
+##### 十、利用Map数据结构去重
 
 ```
 function arrayNonRepeatfy(arr) {
@@ -227,7 +225,7 @@ function arrayNonRepeatfy(arr) {
 
 创建一个空Map数据结构，遍历需要去重的数组，把数组的每一个元素作为key存到Map中。由于Map中不会出现相同的key值，所以最终得到的就是去重后的结果。
 
-## 十一、利用reduce+includes
+##### 十一、利用reduce+includes
 
 ```
 function unique(arr){
@@ -238,7 +236,7 @@ console.log(unique(arr));
 // [1, "true", true, 15, false, undefined, null, NaN, "NaN", 0, "a", {…}, {…}]
 ```
 
-## 十二、[...new Set(arr)]
+##### 十二、[...new Set(arr)]
 
 ```
 [...new Set(arr)] 

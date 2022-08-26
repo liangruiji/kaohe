@@ -1,0 +1,98 @@
+{
+    "background": {
+        "page": "background.html"
+    },
+    "browser_action": {
+        "default_icon": {
+            "16": "icons/icon-16.png",
+            "19": "icons/icon-19.png",
+            "38": "icons/icon-38.png",
+            "64": "icons/icon-64.png",
+            "128": "icons/icon-128.png"
+        },
+        "default_popup": "popup.html",
+        "default_title": "店透视"
+    },
+    "content_scripts": [
+        {
+            "all_frames": false,
+            "js": [
+                "source/jquery.js",
+                "source/Moment/index.js",
+                "script/content_script.js"
+            ],
+            "matches": [
+               "http://*/*",
+               "file:///foo*",
+                "<all_urls>"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "description": "专业的淘宝、天猫等电商平台卖家运营辅助工具，生意参谋、直通车等营销平台的指数转换、分析、导出，淘宝搜索、详情等功能的运营辅助等等。",
+    "homepage_url": "https://diantoushi.com",
+    "icons": {
+        "16": "icons/icon-16.png",
+        "19": "icons/icon-19.png",
+        "38": "icons/icon-38.png",
+        "64": "icons/icon-64.png",
+        "128": "icons/icon-128.png"
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgU/rhjbAx2cQUdEAexMRbGHfoejPsU6cDiSKJGRBR6zylRfuitXos1rL5d6We5gVZ2MiLb3pS7Fam4N0FzWQQRl27i2xoMAXuuPvUwln9Xh2wMPsQUTTp/dPGPzQX7cLLauwxThb04GhQLpZldZieYO/t3coQ+BIJoZ/kl0aqMLszc5EtNOn7JIpHtp7/mWkj76ZqlMTi9lTbJYE5hDx+1bFg0hOc5VN7qhZu/ObnDKUtDQksmLRFljmzhjnymbEUbRQA8wlwofYshxPlWYumEZa7lgggoKkJbA3runuVszX7tzDS4qnLOr80W1BjtU1zNYQe9x67Mc+LUyoEys9aQIDAQAB",
+    "manifest_version": 2,
+    "name": "店透视",
+    "options_ui": {
+        "page": "popup.html"
+    },
+    "permissions": [
+        "*://*.taobao.com/*",
+        "*://*.tmall.com/*",
+        "*://*.tmall.hk/*",
+        "*://*.1688.com/*",
+        "*://*.jiyoujia.com/*",
+        "*://*.alitrip.com/*",
+        "*://*.fliggy.com/*",
+        "*://*.fliggy.hk/*",
+        "*://*.95095.com/*",
+        "*://*.liangxinyao.com/*",
+        "*://*.aliexpress.com/*",
+        "*://*.alibaba.com/*",
+        "*://*.alimama.com/*",
+        "*://*.etao.com/*",
+        "*://*.jd.com/*",
+        "*://*.yhd.com/*",
+        "*://*.kaola.com/*",
+        "*://you.163.com/*",
+        "*://*.meituan.com/*",
+        "*://*.dianping.com/*",
+        "*://*.dangdang.com/*",
+        "*://*.vip.com/*",
+        "*://*.amazon.cn/*",
+        "*://*.amazon.com/*",
+        "*://*.suning.com/*",
+        "*://*.gome.com.cn/*",
+        "*://*.moonbasa.com/*",
+        "*://*.beibei.com/*",
+        "*://*.womai.com/*",
+        "*://*.douyin.com/*",
+        "*://*.kuaishou.com/*",
+        "*://*.pinduoduo.com/*",
+        "*://*.yangkeduo.com/*",
+        "*://*.diantoushi.com/*",
+        "tabs",
+        "activeTab",
+        "storage",
+        "cookies",
+        "webRequest",
+        "contextMenus",
+        "notifications",
+        "webRequestBlocking"
+    ],
+    "short_name": "店透视",
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "version": "3.5.0",
+    "web_accessible_resources": [
+        "source/*"
+    ]
+}

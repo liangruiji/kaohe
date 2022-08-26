@@ -1,0 +1,62 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-11-13 10:44:25
+ * @LastEditTime: 2021-11-15 08:41:00
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /kaohe/上传/数组/复制数组的方法.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function clone(fn) {
+      const arr = [...Array(100000)];
+      arr.fill(1)
+      console.time('timer');
+      fn(arr);
+      console.timeEnd('timer');
+    }
+    clone(arr => Object.values(arr));
+    clone(arr => [].concat(arr));
+    clone(arr => arr.slice());
+    clone(arr => {
+      const a = [];
+      for (let val of arr) {
+        a.push(val);
+      }
+      return a;
+    });
+    clone(arr => [...arr]);
+    clone(arr => JSON.parse(JSON.stringify(arr)));
+    clone(arr => arr.map(i => i));
+    clone(arr => Object.assign([], arr));
+    clone(arr => {
+      let numbersCopy = [];
+      for (i = 0; i < arr.length; i++) {
+        numbersCopy[i] = arr[i];
+      }
+      return numbersCopy
+    });
+    clone(arr => {
+      let numbersCopy = [];
+      i = -1;
+      while (++i < arr.length) {
+        numbersCopy[i] = arr[i];
+      }
+      return numbersCopy
+    });
+    clone(arr => Array.of(...arr));
+  </script>
+
+</body>
+
+</html>
